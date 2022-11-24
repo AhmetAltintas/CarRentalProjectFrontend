@@ -9,4 +9,5 @@ export interface Rent{
     lastName:string;
     brandName:string;
     modelName:string;
+
 }
