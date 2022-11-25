@@ -1,5 +1,5 @@
 export interface Rent{
-    rentId:number;
+    id:number;
     customerId:number;
     carId:number;
     rentDate:Date;
