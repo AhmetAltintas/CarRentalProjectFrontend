@@ -7,10 +7,10 @@ import { AppComponent } from './app.component';
 import { CarComponent } from './components/car/car.component';
 import { ColorComponent } from './components/color/color.component';
 import { CustomerComponent } from './components/customer/customer.component';
-import { CarImageComponent } from './components/car-image/car-image.component';
 import { BrandComponent } from './components/brand/brand.component';
 import { RentComponent } from './components/rent/rent.component';
 import { NaviComponent } from './components/navi/navi.component';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +18,10 @@ import { NaviComponent } from './components/navi/navi.component';
     CarComponent,
     ColorComponent,
     CustomerComponent,
-    CarImageComponent,
     BrandComponent,
     RentComponent,
-    NaviComponent
+    NaviComponent,
+    CarDetailComponent
   ],
   imports: [
     BrowserModule,

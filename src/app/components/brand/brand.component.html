@@ -1,19 +1,13 @@
-<table *ngIf="dataLoaded == true" class="table">
-  <thead>
-    <tr>
-      <th>Marka</th>
-    </tr>
-  </thead>
-  <ul class="list-group">
-    <li
-      (click)="setCurrentBrand(brand)"
-      routerLink="/cars/brand/{{brand.id}}"
-      *ngFor="let brand of brands"
-      [class]="getCurrentBrandClass(brand)"
-    >
-      {{ brand.brandName }}
-    </li>
-  </ul>
+<ul class="list-group">
+  <li [class]="getAllBrandClass()" routerLink="/cars">Markalar</li>
+  <li
+    (click)="setCurrentBrand(brand)"
+    routerLink="/cars/brand/{{brand.id}}"
+    *ngFor="let brand of brands"
+    [class]="getCurrentBrandClass(brand)"
+  >
+    {{ brand.brandName }}
+  </li>
+</ul>
 
-  <h5 *ngIf="currentBrand">{{currentBrand.brandName}} seçtiniz</h5>
-</table> 
+  

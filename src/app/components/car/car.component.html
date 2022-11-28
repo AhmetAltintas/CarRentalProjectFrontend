@@ -1,25 +1,26 @@
 <div *ngIf="dataLoaded == false" class="spinner-border text-dark" role="status">
   <span class="visually-hidden">Loading...</span>
 </div>
+
 <table *ngIf="dataLoaded == true" class="table">
   <thead>
     <tr>
       <th>Id</th>
-      <th>Renk Numarası</th>
-      <th>Marka Numarası</th>
-      <th>Model Adı</th>
+      <th>Marka</th>
+      <th>Model</th>
+      <th>Renk</th>
       <th>Model Yılı</th>
       <th>Günlük Fiyatı</th>
       <th>Açıklama</th>
     </tr>
   </thead>
-  <tr *ngFor="let car of cars">
-    <td>{{ car.id }}</td>
-    <td>{{ car.colorId }}</td>
-    <td>{{ car.brandId }}</td>
-    <td>{{ car.modelName }}</td>
-    <td>{{ car.modelYear }}</td>
-    <td>{{ car.dailyPrice }}</td>
-    <td>{{ car.description }}</td>
+  <tr (click)="setCurrentCar(item)" routerLink="/carDetail/{{item.id}}" *ngFor="let item of cars">
+    <td>{{ item.id }}</td>
+    <td>{{ item.brandId }}</td>
+    <td>{{ item.modelName }}</td>
+    <td>{{ item.colorId }}</td>
+    <td>{{ item.modelYear }}</td>
+    <td>{{ item.dailyPrice }}</td>
+    <td>{{ item.description }}</td>
   </tr>
 </table>
