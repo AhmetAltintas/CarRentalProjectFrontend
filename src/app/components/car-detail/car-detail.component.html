@@ -17,14 +17,16 @@
             <span class="visually-hidden">Next</span>
         </button>
     </div>
-    <div *ngFor="let car of carDetail" class="card-body">
-        <h5 class="card-title">{{car.modelName}}</h5>
-        <p class="card-text">{{car.description}}</p>
+     
+    <div class="card-body">
+        <h5 class="card-title">{{carDetail.modelName}}</h5>
+        <p class="card-text">{{carDetail.description}}</p>
     </div>
-    <ul *ngFor="let car of carDetail" class="list-group list-group-flush">
-        <li class="list-group-item">Brand : {{car.brandName}}</li>
-        <li class="list-group-item">Color : {{car.colorName}}</li>
-        <li class="list-group-item">Model Year : {{car.modelYear}}</li>
-        <li class="list-group-item">Daily Price : {{car.dailyPrice | currency:"$"}}</li>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Brand : {{carDetail.brandName}}</li>
+        <li class="list-group-item">Color : {{carDetail.colorName}}</li>
+        <li class="list-group-item">Model Year : {{carDetail.modelYear}}</li>
+        <li class="list-group-item">Daily Price : {{carDetail.dailyPrice | currency:"$"}}</li>
     </ul>
+  
   </div>

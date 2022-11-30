@@ -18,7 +18,7 @@ export class CarDetailComponent implements OnInit{
     private activatedRoute: ActivatedRoute) {}
 
     dataLoaded = false;
-    carDetail: CarDetailDto[];
+    carDetail : CarDetailDto;
     carImages: CarImage[];
 
     ngOnInit(): void {
@@ -26,12 +26,18 @@ export class CarDetailComponent implements OnInit{
         this.getCarById(params['carId']);
         this.getCarImagesByCarId(params["carId"]);
       })
+
+      setTimeout(()=>{
+        console.log(this.carDetail)
+        console.log(this.carImages.length)
+
+      },4000)
     }
 
     getCarById(id:number) {
       this.carService.getCarById(id).subscribe(response => {
-        this.carDetail = response.data;
-        this.dataLoaded = true;
+      this.carDetail = response.data;
+      this.dataLoaded = true;
       })
     }
 
