@@ -12,6 +12,7 @@ export class CarComponent implements OnInit {
   currentCar: CarDetailDto;
   cars: CarDetailDto[] = [];
   dataLoaded = false;
+  filterText="";
 
   constructor(
     private carService: CarService,
@@ -56,4 +57,6 @@ export class CarComponent implements OnInit {
   setCurrentCar(car: CarDetailDto) {
     this.currentCar = car;
   }
+
+  
 }

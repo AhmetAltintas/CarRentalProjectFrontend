@@ -2,6 +2,20 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 
+<div class="mb-3">
+  <label for="filterText" class="form-label">Ürün ara</label>
+  <input
+    type="text"
+    [(ngModel)]="filterText"
+    class="form-control"
+    id="filterText"
+    placeholder="Arama ifadesi giriniz"
+  />
+</div>
+<div *ngIf="filterText.length > 1" class="alert alert-light" role="alert">
+  {{ filterText }} aradınız.
+</div>
+
 <table *ngIf="dataLoaded == true" class="table">
   <thead>
     <tr>
@@ -12,15 +26,27 @@
       <th>Model Yılı</th>
       <th>Günlük Fiyatı</th>
       <th>Açıklama</th>
+      <th></th>
     </tr>
   </thead>
-  <tr (click)="setCurrentCar(item)" routerLink="/carDetail/{{item.id}}" *ngFor="let item of cars">
-    <td>{{ item.id }}</td>
-    <td>{{ item.brandId }}</td>
-    <td>{{ item.modelName }}</td>
-    <td>{{ item.colorId }}</td>
-    <td>{{ item.modelYear }}</td>
-    <td>{{ item.dailyPrice }}</td>
-    <td>{{ item.description }}</td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let item of cars | filterPipe : filterText">
+      <td>{{ item.id }}</td>
+      <td>{{ item.brandId }}</td>
+      <td>{{ item.modelName }}</td>
+      <td>{{ item.colorId }}</td>
+      <td>{{ item.modelYear }}</td>
+      <td>{{ item.dailyPrice | currency : "$" }}</td>
+      <td>{{ item.description }}</td>
+      <td>
+        <button
+          routerLink="/carDetail/{{ item.id }}"
+          type="button"
+          class="btn btn-primary"
+        >
+          İncele
+        </button>
+      </td>
+    </tr>
+  </tbody>
 </table>

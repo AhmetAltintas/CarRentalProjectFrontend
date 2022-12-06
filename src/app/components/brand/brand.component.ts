@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
+import { FormControl, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-brand',
@@ -9,8 +11,13 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandComponent implements OnInit {
   brands: Brand[] = [];
-  currentBrand: Brand;
+  currentBrand: Brand | undefined;
   dataLoaded = false;
+
+  brandForm = new FormGroup({
+    brand: new FormControl(this.brands),
+  });
+
   constructor(private brandService: BrandService) {}
 
   ngOnInit(): void {
@@ -26,6 +33,7 @@ export class BrandComponent implements OnInit {
 
   setCurrentBrand(brand: Brand) {
     this.currentBrand = brand;
+    console.log(brand.brandName);
   }
 
   getCurrentBrandClass(brand: Brand) {
@@ -36,12 +44,19 @@ export class BrandComponent implements OnInit {
     }
   }
 
-  getAllBrandClass(){
-    if(!this.currentBrand){
-      return "list-group-item active"
+  getAllBrandClass() {
+    if (!this.currentBrand) {
+      return 'list-group-item active';
+    } else {
+      return 'list-group-item';
     }
-    else{
-      return "list-group-item"
-    }
+  }
+
+  setCurrentBrandEmpty() {
+    this.currentBrand = undefined;
+  }
+
+  submit() {
+    console.log(this.brandForm.value.brand);
   }
 }

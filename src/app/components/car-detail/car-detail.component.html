@@ -1,32 +1,70 @@
-<div class="card" style="margin: 0 auto; width: 28rem;">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel"
-        style="width: 28rem; height: 18rem;">
-        <div class="carousel-inner">
-            <div *ngFor="let item of carImages" class="carousel-item active">
-                <img [src]="getImagePath(item)" style="width: 28rem; height: 18rem;">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+<div class="card" style="margin: 0 auto; width: 28rem">
+  <div
+    id="carouselExampleControls"
+    class="carousel slide"
+    data-bs-ride="carousel"
+    style="width: 28rem; height: 18rem"
+  >
+    <div class="carousel-inner">
+      <div *ngFor="let item of carImages" class="carousel-item active">
+        <img [src]="getImagePath(item)" style="width: 28rem; height: 18rem" />
+      </div>
     </div>
-     
-    <div class="card-body">
-        <h5 class="card-title">{{carDetail.modelName}}</h5>
-        <p class="card-text">{{carDetail.description}}</p>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item">Brand : {{carDetail.brandName}}</li>
-        <li class="list-group-item">Color : {{carDetail.colorName}}</li>
-        <li class="list-group-item">Model Year : {{carDetail.modelYear}}</li>
-        <li class="list-group-item">Daily Price : {{carDetail.dailyPrice | currency:"$"}}</li>
-    </ul>
-  
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleControls"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
   </div>
+
+  <div class="card-body">
+    <h5 class="card-title">{{ carDetail.modelName }}</h5>
+    <p class="card-text">{{ carDetail.description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Brand : {{ carDetail.brandName }}</li>
+    <li class="list-group-item">Color : {{ carDetail.colorName }}</li>
+    <li class="list-group-item">Model Year : {{ carDetail.modelYear }}</li>
+    <li class="list-group-item">
+      Daily Price : {{ carDetail.dailyPrice | currency : "$" }}
+    </li>
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapseWidthExample"
+      aria-expanded="false"
+      aria-controls="collapseWidthExample"
+    >
+      KİRALA
+    </button>
+    <div style="min-height: 120px">
+      <div class="collapse collapse-horizontal" id="collapseWidthExample">
+        <div class="card card-body" style="width: 300px">
+          <button
+            class="btn btn-primary"
+            type="button"
+            data-bs-target="#collapseWidthExample"
+            aria-expanded="false"
+            aria-controls="collapseWidthExample"
+          >
+            KİRALA
+          </button>
+        </div>
+      </div>
+    </div>
+  </ul>
+</div>

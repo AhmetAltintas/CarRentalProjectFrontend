@@ -1,4 +1,5 @@
-<ul class="list-group">
+<!--
+  <ul class="list-group">
   <li [class]="getAllColorClass()" routerLink="/cars">Renkler</li>
   <li
     (click)="setCurrentColor(color)"
@@ -9,3 +10,36 @@
     {{ color.colorName }}
   </li>
 </ul>
+-->
+
+<form [formGroup]="colorForm" (ngSubmit)="submit()">
+  <label
+    for="colors"    
+    (click)="setCurrentColorEmpty()"
+    [class]="getAllColorClass()"
+    routerLink="/cars"
+    >Renkler:</label
+  >
+  <select
+    formControlName="color"
+    class="form-select"
+    id="colors"
+  >
+  <option selected>--Seçiniz--</option>
+    <option
+      *ngFor="let color of colors"
+      [value]="color.id"
+      [class]="getCurrentColorClass(color)"
+      onchange="setCurrentColor(color)"
+    >
+      {{ color.colorName }}
+    </option>
+  </select>
+  <button
+    type="submit"
+    class="btn btn-success mt-2"
+    routerLink="/cars/color/{{ colorForm.value.color }}"
+  >
+    Submit
+  </button>
+</form>

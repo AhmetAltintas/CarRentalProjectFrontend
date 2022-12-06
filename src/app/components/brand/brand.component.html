@@ -1,3 +1,4 @@
+<!--
 <ul class="list-group">
   <li [class]="getAllBrandClass()" routerLink="/cars">Markalar</li>
   <li
@@ -9,5 +10,36 @@
     {{ brand.brandName }}
   </li>
 </ul>
+-->
 
-  
+<form [formGroup]="brandForm" (ngSubmit)="submit()">
+  <label
+    for="brands"    
+    (click)="setCurrentBrandEmpty()"
+    [class]="getAllBrandClass()"
+    routerLink="/cars"
+    >Markalar:</label
+  >
+  <select
+    formControlName="brand"
+    class="form-select"
+    id="brands"
+  >
+  <option selected>--Seçiniz--</option>
+    <option
+      *ngFor="let brand of brands"
+      [value]="brand.id"
+      [class]="getCurrentBrandClass(brand)"
+      onchange="setCurrentBrand(brand)"
+    >
+      {{ brand.brandName }}
+    </option>
+  </select>
+  <button
+    type="submit"
+    class="btn btn-success mt-2"
+    routerLink="/cars/brand/{{ brandForm.value.brand }}"
+  >
+    Submit
+  </button>
+</form>

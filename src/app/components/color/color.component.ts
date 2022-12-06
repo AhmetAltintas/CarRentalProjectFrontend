@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Color } from 'src/app/models/color';
 import { ColorService } from 'src/app/services/color.service';
 
@@ -9,8 +10,14 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class ColorComponent implements OnInit {
   colors: Color[] = [];
-  currentColor: Color;
+  currentColor: Color | undefined;
   dataLoaded = false;
+
+
+  colorForm = new FormGroup({
+    color: new FormControl(this.colors),
+  });
+
   constructor(private colorService: ColorService) {}
 
   ngOnInit(): void {
@@ -43,5 +50,13 @@ export class ColorComponent implements OnInit {
     else{
       return "list-group-item"
     }
+  }
+
+  setCurrentColorEmpty() {
+    this.currentColor = undefined;
+  }
+
+  submit() {
+    console.log(this.colorForm.value.color);
   }
 }
