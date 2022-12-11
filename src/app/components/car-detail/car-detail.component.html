@@ -33,6 +33,7 @@
   <div class="card-body">
     <h5 class="card-title">{{ carDetail.modelName }}</h5>
     <p class="card-text">{{ carDetail.description }}</p>
+    {{carDetail.id}}
   </div>
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Brand : {{ carDetail.brandName }}</li>
@@ -51,6 +52,6 @@
     >
       KİRALA
     </button>
-    <app-rent></app-rent>
+    <app-rent-operation [carId]="carDetail.id"></app-rent-operation>
   </ul>
 </div>

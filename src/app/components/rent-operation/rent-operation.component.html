@@ -1,0 +1,71 @@
+<div style="min-height: 120px">
+  <div class="collapse collapse-horizontal" id="collapseWidthExample">
+    <div class="card card-body" style="width: 300px">
+      <div class="content">
+        <div class="col-md-12">
+          <form action="" [formGroup]="addRentForm">
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="rentDate">Kiralama Tarihi</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  id="rentDate"
+                  formControlName="rentDate"
+                  [(ngModel)]="rentDate"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="returnDate">İade Tarihi</label>
+                <input
+                  class="form-control"
+                  type="date"
+                  id="returnDate"
+                  formControlName="returnDate"
+                  [(ngModel)]="returnDate"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="carId">Araba</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  id="carId"
+                  formControlName="carId"
+                  [(ngModel)]="carId"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="customerId">Müşteri</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  id="customerId"
+                  formControlName="customerId"
+                  [(ngModel)]="customerId"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <button
+        class="btn btn-primary"
+        type="button"
+        data-bs-target="#collapseWidthExample"
+        aria-expanded="false"
+        aria-controls="collapseWidthExample"
+        (click)="addRent()"
+      >
+        ONAYLA
+      </button>
+    </div>
+  </div>
+</div>

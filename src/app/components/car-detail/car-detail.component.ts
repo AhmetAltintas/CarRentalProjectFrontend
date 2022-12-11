@@ -26,12 +26,6 @@ export class CarDetailComponent implements OnInit{
         this.getCarById(params['carId']);
         this.getCarImagesByCarId(params["carId"]);
       })
-
-      setTimeout(()=>{
-        console.log(this.carDetail)
-        console.log(this.carImages.length)
-
-      },4000)
     }
 
     getCarById(id:number) {
