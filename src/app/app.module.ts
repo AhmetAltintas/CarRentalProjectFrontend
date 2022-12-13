@@ -17,6 +17,7 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
 import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { RentOperationComponent } from './components/rent-operation/rent-operation.component';
 import { ToastrModule } from 'ngx-toastr';
+import { PaymentComponent } from './components/payment/payment.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ToastrModule } from 'ngx-toastr';
     NaviComponent,
     CarDetailComponent,
     FilterPipePipe,
-    RentOperationComponent
+    RentOperationComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

@@ -20,4 +20,5 @@ export class RentService {
   addRent(rent:Rent):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+"rents/add", rent)
   }
+
 }

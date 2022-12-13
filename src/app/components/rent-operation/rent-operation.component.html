@@ -55,7 +55,9 @@
           </form>
         </div>
       </div>
-
+      <div class="mb-3">
+        {{dailyPrice}}
+      </div>
       <button
         class="btn btn-primary"
         type="button"
@@ -63,9 +65,12 @@
         aria-expanded="false"
         aria-controls="collapseWidthExample"
         (click)="addRent()"
+        (click)="calculateDiff()"
       >
         ONAYLA
       </button>
     </div>
+  </div>
+  <div>
   </div>
 </div>

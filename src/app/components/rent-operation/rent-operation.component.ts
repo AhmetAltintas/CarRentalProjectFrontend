@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rent-operation',
@@ -17,6 +18,7 @@ export class RentOperationComponent implements OnInit {
   dataLoaded = false;
 
   @Input() carId: number;
+  @Input() dailyPrice: number;
   customerId: number = 1;
   rentDate: Date;
   returnDate: Date;
@@ -25,11 +27,12 @@ export class RentOperationComponent implements OnInit {
   constructor(
     private rentService: RentService,
     private formBuilder: FormBuilder,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
   ) {}
 
   ngOnInit(): void {
     this.createAddRentForm();
+    this.calculateDiff();
   }
 
   createAddRentForm(){
@@ -47,15 +50,24 @@ export class RentOperationComponent implements OnInit {
       this.rentService.addRent(rentModel).subscribe(response=>{
         this.toastrService.success(response.message,"Başarılı")
       },responseError=>{
-        if(responseError.error.ValidationErrors.length>0){
+        if(responseError.error.ValidationErrors!=null){
           console.log(responseError.error.ValidationErrors)
           for (let i = 0; i < responseError.error.ValidationErrors.length; i++) {
             this.toastrService.error(responseError.error.ValidationErrors[i].ErrorMessage, "Doğrulama hatası")
           }
         }
+        else if (responseError.error.success==false) {
+          this.toastrService.error(responseError.error.message,"Doğrulama hatası")
+        }
       })
     }else{
       this.toastrService.error("Formunuz hatalı")
     }
+  }
+
+  calculateDiff() {
+    let rentDate = this.rentDate;
+    let returnDate = this.returnDate;
+    return Math.floor((Date.UTC(returnDate.getFullYear(), returnDate.getMonth(), returnDate.getDate()) - Date.UTC(rentDate.getFullYear(), rentDate.getMonth(), rentDate.getDate()) ) /(1000 * 60 * 60 * 24));
   }
 }
