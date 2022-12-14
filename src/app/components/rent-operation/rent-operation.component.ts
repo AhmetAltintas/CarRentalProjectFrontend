@@ -4,7 +4,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rent } from 'src/app/models/rent';
-import { DatePickerModule } from 'angular-material-datepicker/src/datepicker/datepicker.module';
 
 @Component({
   selector: 'app-rent-operation',
@@ -28,7 +27,6 @@ export class RentOperationComponent implements OnInit {
     private toastrService: ToastrService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private datePickerModule : DatePickerModule,
   ) {}
 
   ngOnInit(): void {
