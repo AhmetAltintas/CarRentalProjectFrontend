@@ -1,8 +1,9 @@
 export interface Payment{
-    cardNumber:Number;
-    expiry:Date;
-    ownerFullName:String;
-    cvv:number;
-
-    totalAmount:number;
+    id:number
+    customerId:number
+    fullName:string
+    cardNumber:string
+    cvv:string
+    expiryMonth:number
+    expiryYear:number
 }

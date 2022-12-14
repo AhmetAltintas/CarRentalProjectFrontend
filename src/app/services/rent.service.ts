@@ -21,4 +21,8 @@ export class RentService {
     return this.httpClient.post<ResponseModel>(this.apiUrl+"rents/add", rent)
   }
 
+  checkRulesForAdding(rent:Rent):Observable<ResponseModel> {
+    let newPath = this.apiUrl + "rents/rulesforadding"
+    return this.httpClient.post<ResponseModel>(newPath,rent);
+  }
 }
