@@ -5,8 +5,6 @@ import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { CarImage } from 'src/app/models/carImage';
 import { Payment } from 'src/app/models/payment';
 import { Rent } from 'src/app/models/rent';
-import { CarImageService } from 'src/app/services/car-image.service';
-import { CarService } from 'src/app/services/car.service';
 import { PaymentService } from 'src/app/services/payment.service';
 import { RentService } from 'src/app/services/rent.service';
 
@@ -16,7 +14,7 @@ import { RentService } from 'src/app/services/rent.service';
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent implements OnInit{
-  car: CarDetailDto;
+
   carImages: CarImage[] = [];
   cardOwner:string = "";
   cardNumber:string = "";
@@ -26,15 +24,11 @@ export class PaymentComponent implements OnInit{
   total:any;
   rentDate:string;
   returnDate:string;
-  carDataUpdated = false;
-  carImagesUpdated = false;
   currentCarId:number;
   currentCustomerId:number;
   
   constructor(
-    private carService:CarService,
     private activatedRoute:ActivatedRoute,
-    private carImagesService:CarImageService,
     private paymentService:PaymentService,
     private toastrService:ToastrService,
     private rentService:RentService,

@@ -1,21 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
 import { RentService } from 'src/app/services/rent.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rent } from 'src/app/models/rent';
+import { Component, Input, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-rent-operation',
-  templateUrl: './rent-operation.component.html',
   styleUrls: ['./rent-operation.component.css'],
+  templateUrl: './rent-operation.component.html',
 })
+
 export class RentOperationComponent implements OnInit {
   dataLoaded = false;
 
-  @Input() currentCarId: number;
-  @Input() currentDailyPrice: number;
-  currentCustomerId: number = 1;
+  @Input() carId: number;
+  @Input() dailyPrice: number;
+
+  customerId: number = 1;
   rentDate: Date;
   returnDate: Date;
 
@@ -33,10 +36,10 @@ export class RentOperationComponent implements OnInit {
     this.createAddRentForm();
     this.activatedRoute.params.subscribe((params) => {
       if (params['carId']) {
-        this.currentCarId = Number(params['carId']);
+        this.carId = Number(params['carId']);
       }
       if (params['customerId']) {
-        this.currentCustomerId = Number(params['customerId']);
+        this.customerId = Number(params['customerId']);
       }
     });
   }
@@ -72,15 +75,15 @@ export class RentOperationComponent implements OnInit {
   checkRulesForAdding() {
     if (this.addRentForm.valid) {
       let rent: Rent = Object.assign({}, this.addRentForm.value);
-      rent.carId = this.currentCarId;
-      rent.customerId = this.currentCustomerId;
+      rent.carId = this.carId;
+      rent.customerId = this.customerId;
 
       this.rentService.checkRulesForAdding(rent).subscribe(
         (response) => {
           this.toastrService.success(response.message);
           this.router.navigate([
             '/payment/' +
-              this.currentCarId +
+              this.carId +
               '/' +
               this.calculateDiff().toString +
               '/' +

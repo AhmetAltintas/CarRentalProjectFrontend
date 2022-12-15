@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { CarImage } from 'src/app/models/carImage';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
+import { Component, OnInit } from '@angular/core';
+
 
 
 @Component({
@@ -13,7 +14,8 @@ import { CarService } from 'src/app/services/car.service';
 })
 export class CarDetailComponent implements OnInit{
 
-  constructor(private carService: CarService,
+  constructor(
+    private carService: CarService,
     private carImageService: CarImageService,
     private activatedRoute: ActivatedRoute) {}
 
