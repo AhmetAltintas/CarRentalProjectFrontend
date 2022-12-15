@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rent } from 'src/app/models/rent';
 import { Component, Input, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class RentOperationComponent implements OnInit {
   rentDate: Date;
   returnDate: Date;
 
+  
   addRentForm: FormGroup;
 
   constructor(
@@ -51,11 +53,19 @@ export class RentOperationComponent implements OnInit {
     });
   }
 
+
+  getFormatedRentDate(rentDate:Date, format:string){
+    const rentDatePipe = new DatePipe('en-US');
+    return rentDatePipe.transform(rentDate, format);
+  }
+
+
+
+
   calculateDiff() {
-    let rentDate = this.rentDate;
-    let returnDate = this.returnDate;
-    console.log(this.rentDate)
-    console.log(this.returnDate)
+    const rentDate = new Date(this.rentDate);
+    const returnDate = new Date(this.returnDate);
+
     return Math.floor(
       (Date.UTC(
         returnDate.getFullYear(),
