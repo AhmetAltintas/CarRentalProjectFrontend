@@ -15,7 +15,6 @@ import { RentService } from 'src/app/services/rent.service';
 })
 export class PaymentComponent implements OnInit{
 
-  carImages: CarImage[] = [];
   cardOwner:string = "";
   cardNumber:string = "";
   expiryMonthAndYear:string = "";
@@ -25,7 +24,7 @@ export class PaymentComponent implements OnInit{
   rentDate:string;
   returnDate:string;
   currentCarId:number;
-  currentCustomerId:number;
+  currentCustomerId:number = 1;
   
   constructor(
     private activatedRoute:ActivatedRoute,
