@@ -12,7 +12,7 @@
 </ul>
 -->
 
-<form [formGroup]="brandForm" (ngSubmit)="submit()">
+<form [formGroup]="brandForm">
   <label
     for="brands"    
     (click)="setCurrentBrandEmpty()"
@@ -25,7 +25,7 @@
     class="form-select"
     id="brands"
   >
-  <option selected>--Seçiniz--</option>
+  <option selected>Seçiniz</option>
     <option
       *ngFor="let brand of brands"
       [value]="brand.id"

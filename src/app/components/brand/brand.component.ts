@@ -56,7 +56,4 @@ export class BrandComponent implements OnInit {
     this.currentBrand = undefined;
   }
 
-  submit() {
-    console.log(this.brandForm.value.brand);
-  }
 }

@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rent } from 'src/app/models/rent';
 import { Component, Input, OnInit } from '@angular/core';
-import { DatePipe } from '@angular/common';
 
 
 @Component({
@@ -52,14 +51,6 @@ export class RentOperationComponent implements OnInit {
       returnDate: ['', Validators.required],
     });
   }
-
-
-  getFormatedRentDate(rentDate:Date, format:string){
-    const rentDatePipe = new DatePipe('en-US');
-    return rentDatePipe.transform(rentDate, format);
-  }
-
-
 
 
   calculateDiff() {

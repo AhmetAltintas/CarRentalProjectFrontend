@@ -1,0 +1,97 @@
+<thead>
+    <div>
+        <div>
+            <td>ARABALAR</td>
+        </div>
+        <div>
+            <tr><li *ngFor="let car of cars">
+              <span class="badge text-bg-secondary"></span>
+              {{ car.modelName }}
+              <span class="badge text-bg-secondary"></span>
+              {{ car.id }}
+              <span (click)="deleteCar()" class="badge text-bg-secondary">Sil</span>
+              <span (click)="updateCar()" class="badge text-bg-secondary">Güncelle</span>
+              </li></tr>
+        </div>
+    </div>
+    </thead>
+    <br><br>
+    <tbody>
+    <div>
+        <form action="" [formGroup]="addCarForm">
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="brandId">Marka No</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  id="brandId"
+                  formControlName="brandId"
+                  [(ngModel)]="brandId"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+                <div class="form-group">
+                  <label for="colorId">Renk No</label>
+                  <input
+                    class="form-control"
+                    type="number"
+                    id="colorId"
+                    formControlName="colorId"
+                    [(ngModel)]="colorId"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="modelYear">Model Yılı</label>
+                  <input
+                    class="form-control"
+                    type="number"
+                    id="modelYear"
+                    formControlName="modelYear"
+                    [(ngModel)]="modelYear"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="dailyPrice">Günlük Fiyat</label>
+                  <input
+                    class="form-control"
+                    type="number"
+                    id="dailyPrice"
+                    formControlName="dailyPrice"
+                    [(ngModel)]="dailyPrice"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="description">Açıklama</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="description"
+                    formControlName="description"
+                    [(ngModel)]="description"
+                  />
+                </div>
+              </div>
+              <div class="mb-3">
+                <div class="form-group">
+                  <label for="modelName">Model Adı</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    id="modelName"
+                    formControlName="modelName"
+                    [(ngModel)]="modelName"
+                  />
+                </div>
+              </div>
+          </form>
+          <div><button (click)="addCar()" class="btn btn-success w-100">Add Car</button></div>
+    </div>
+    </tbody>

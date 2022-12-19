@@ -1,0 +1,37 @@
+<thead>
+<div>
+    <div>
+        <td>MARKALAR</td>
+    </div>
+    <div>
+        <tr><li *ngFor="let brand of brands">
+          <span class="badge text-bg-secondary"></span>
+          {{ brand.brandName }}
+          <span class="badge text-bg-secondary"></span>
+          {{ brand.id }}
+          <span (click)="deleteBrand()" class="badge text-bg-secondary">Sil</span>
+          <span (click)="updateBrand()" class="badge text-bg-secondary">Güncelle</span>
+          </li></tr>
+    </div>
+</div>
+</thead>
+<br><br>
+<tbody>
+<div>
+    <form action="" [formGroup]="addBrandForm">
+        <div class="mb-3">
+          <div class="form-group">
+            <label for="brandName">Marka Adı</label>
+            <input
+              class="form-control"
+              type="text"
+              id="brandName"
+              formControlName="brandName"
+              [(ngModel)]="brandName"
+            />
+          </div>
+        </div>
+      </form>
+      <div><button (click)="addBrand()" class="btn btn-success w-100">Add Brand</button></div>
+</div>
+</tbody>

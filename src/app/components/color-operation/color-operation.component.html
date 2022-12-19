@@ -1,0 +1,37 @@
+<thead>
+    <div>
+        <div>
+            <td>RENKLER</td>
+        </div>
+        <div>
+            <tr><li *ngFor="let color of colors">
+              <span class="badge text-bg-secondary"></span>
+              {{ color.colorName }}
+              <span class="badge text-bg-secondary"></span>
+              {{ color.id }}
+              <span (click)="deleteColor()" class="badge text-bg-secondary">Sil</span>
+              <span (click)="updateColor()" class="badge text-bg-secondary">Güncelle</span>
+              </li></tr>
+        </div>
+    </div>
+    </thead>
+    <br><br>
+    <tbody>
+    <div>
+        <form action="" [formGroup]="addColorForm">
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="colorName">Renk Adı</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="colorName"
+                  formControlName="colorName"
+                  [(ngModel)]="colorName"
+                />
+              </div>
+            </div>
+          </form>
+          <div><button (click)="addColor()" class="btn btn-success w-100">Add Color</button></div>
+    </div>
+    </tbody>

@@ -57,7 +57,4 @@ export class ColorComponent implements OnInit {
     this.currentColor = undefined;
   }
 
-  submit() {
-    console.log(this.colorForm.value.color);
-  }
 }

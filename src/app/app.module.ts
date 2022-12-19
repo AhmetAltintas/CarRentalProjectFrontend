@@ -18,6 +18,9 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { PaymentComponent } from './components/payment/payment.component';
 import { ToastrModule } from 'ngx-toastr';
 import { RentOperationComponent } from './components/rent-operation/rent-operation.component';
+import { BrandOperationComponent } from './components/brand-operation/brand-operation.component';
+import { CarOperationComponent } from './components/car-operation/car-operation.component';
+import { ColorOperationComponent } from './components/color-operation/color-operation.component';
 
 
 @NgModule({
@@ -32,7 +35,10 @@ import { RentOperationComponent } from './components/rent-operation/rent-operati
     CarDetailComponent,
     FilterPipePipe,
     RentOperationComponent,
-    PaymentComponent
+    PaymentComponent,
+    BrandOperationComponent,
+    CarOperationComponent,
+    ColorOperationComponent
   ],
   imports: [
     BrowserModule,

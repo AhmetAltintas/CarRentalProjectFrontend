@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CarDetailDto } from 'src/app/models/carDetailDto';
-import { CarImage } from 'src/app/models/carImage';
 import { Payment } from 'src/app/models/payment';
 import { Rent } from 'src/app/models/rent';
 import { PaymentService } from 'src/app/services/payment.service';
@@ -42,7 +40,7 @@ export class PaymentComponent implements OnInit{
           this.rentDate = params["rentDate"];
           this.returnDate = params["returnDate"];
         }
-      })
+      });
   }
 
   addRent(){
