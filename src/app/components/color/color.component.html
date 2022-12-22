@@ -1,17 +1,3 @@
-<!--
-  <ul class="list-group">
-  <li [class]="getAllColorClass()" routerLink="/cars">Renkler</li>
-  <li
-    (click)="setCurrentColor(color)"
-    routerLink="/cars/color/{{ color.id }}"
-    *ngFor="let color of colors"
-    [class]="getCurrentColorClass(color)"
-  >
-    {{ color.colorName }}
-  </li>
-</ul>
--->
-
 <form [formGroup]="colorForm">
   <label
     for="colors"    

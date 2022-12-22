@@ -1,17 +1,3 @@
-<!--
-<ul class="list-group">
-  <li [class]="getAllBrandClass()" routerLink="/cars">Markalar</li>
-  <li
-    (click)="setCurrentBrand(brand)" 
-    routerLink="/cars/brand/{{brand.id}}"
-    *ngFor="let brand of brands"
-    [class]="getCurrentBrandClass(brand)"
-  >
-    {{ brand.brandName }}
-  </li>
-</ul>
--->
-
 <form [formGroup]="brandForm">
   <label
     for="brands"    
