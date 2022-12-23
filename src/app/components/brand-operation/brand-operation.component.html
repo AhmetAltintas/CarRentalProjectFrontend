@@ -1,37 +1,89 @@
 <thead>
-<div>
+  <div>
     <div>
-        <td>MARKALAR</td>
+      <td><h3>MARKALAR</h3></td>
     </div>
     <div>
-        <tr><li *ngFor="let brand of brands">
-          <span class="badge text-bg-secondary"></span>
-          {{ brand.brandName }}
+      <tr>
+        <li *ngFor="let brand of brands">
           <span class="badge text-bg-secondary"></span>
           {{ brand.id }}
-          <span (click)="deleteBrand()" class="badge text-bg-secondary">Sil</span>
-          <span (click)="updateBrand()" class="badge text-bg-secondary">Güncelle</span>
-          </li></tr>
-    </div>
-</div>
-</thead>
-<br><br>
-<tbody>
-<div>
-    <form action="" [formGroup]="addBrandForm">
-        <div class="mb-3">
-          <div class="form-group">
-            <label for="brandName">Marka Adı</label>
-            <input
-              class="form-control"
-              type="text"
-              id="brandName"
-              formControlName="brandName"
-              [(ngModel)]="brandName"
-            />
+          <span class="badge text-bg-secondary"></span>
+          {{ brand.brandName }}
+          <span (click)="deleteBrand(brand)" class="badge text-bg-secondary"
+            >Sil</span
+          >
+          <span
+            class="badge text-bg-secondary"
+            data-bs-toggle="collapse"
+            href="#collapseExample"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseExample"
+            (click)="patchValueClick(brand)"
+            >Güncelle</span
+          >
+        </li>
+      </tr>
+      <div class="collapse" id="collapseExample">
+        <div class="card card-body">
+          <form action="" [formGroup]="updateBrandForm">
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="id">Id</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  id="id"
+                  formControlName="id"
+                  [(ngModel)]="id"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="form-group">
+                <label for="updateName">Marka Adı</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="updateName"
+                  formControlName="brandName"
+                  [(ngModel)]="brandName"
+                />
+              </div>
+            </div>
+          </form>
+          <div>
+            <button (click)="updateBrand()" class="btn btn-success w-100">
+              Güncelle
+            </button>
           </div>
         </div>
-      </form>
-      <div><button (click)="addBrand()" class="btn btn-success w-100">Add Brand</button></div>
-</div>
+      </div>
+    </div>
+  </div>
+</thead>
+<br/><br/>
+<tbody>
+  <div>
+    <form action="" [formGroup]="addBrandForm">
+      <div class="mb-3">
+        <div class="form-group">
+          <label for="brandName">Marka Adı</label>
+          <input
+            class="form-control"
+            type="text"
+            id="brandName"
+            formControlName="brandName"
+            [(ngModel)]="brandName"
+          />
+        </div>
+      </div>
+    </form>
+    <div>
+      <button (click)="addBrand()" class="btn btn-success w-100">
+        Add Brand
+      </button>
+    </div>
+  </div>
 </tbody>

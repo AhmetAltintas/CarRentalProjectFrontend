@@ -10,15 +10,20 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car-operation.component.css']
 })
 export class CarOperationComponent implements OnInit{
+  id:number;
   brandId: number;
   colorId: number;
   modelYear: number;
   dailyPrice: number;
   description: string;
   modelName:string;
+
   cars: CarDetailDto[] = [];
+
   dataLoaded = false;
+
   addCarForm: FormGroup;
+  updateCarForm: FormGroup;
 
   constructor(
     private toastrService:ToastrService,
@@ -29,6 +34,7 @@ export class CarOperationComponent implements OnInit{
   ngOnInit(): void {
     this.getCars();
     this.createAddCarForm();
+    this.createUpdateCarForm();
   }
 
   createAddCarForm() {
@@ -40,6 +46,18 @@ export class CarOperationComponent implements OnInit{
       description: ['', Validators.required],
       modelName: ['', Validators.required],
     });
+  }
+
+  createUpdateCarForm(){
+    this.updateCarForm = this.formBuilder.group({
+      id: ['', Validators.required],
+      brandId: ['', Validators.required],
+      colorId: ['', Validators.required],
+      modelYear: ['', Validators.required],
+      dailyPrice: ['', Validators.required],
+      description: ['', Validators.required],
+      modelName: ['', Validators.required],
+    })
   }
 
   getCars() {
@@ -74,11 +92,56 @@ export class CarOperationComponent implements OnInit{
     }
   }
 
-  deleteCar(){
-
+  deleteCar(car:CarDetailDto){
+    this.carService.delete(car).subscribe((response) => {
+      this.toastrService.success(response.message, 'Başarıyla silindi !');
+    },
+    (responseError) => {
+      if (responseError.error.Errors.length > 0) {
+        for (let i = 0; i < responseError.error.Errors.length; i++) {
+          this.toastrService.error(
+            responseError.error.Errors[i].ErrorMessage,
+            'Silinemedi.'
+          );
+        }
+      }
+    }
+    )
   }
 
-  updateCar(){
+  patchValueClick(car : any): void{
+    this.updateCarForm.patchValue({
+      id:car.id,
+      brandId:car.brandId,
+      colorId:car.colorId,
+      modelYear:car.modelYear,
+      dailyPrice:car.dailyPrice,
+      description:car.description,
+      modelName:car.modelName
+    })
+  }
+  
 
+  updateCar(){
+    if (this.updateCarForm.valid) {
+      let carModel: CarDetailDto = Object.assign({}, this.updateCarForm.value);
+      this.carService.update(carModel).subscribe(response => {
+        this.toastrService.success(response.message,"Başarılı")
+      },errorResponse=>{
+        if(errorResponse.error.Errors){
+          if(errorResponse.error.Errors.length>0){
+            for (let i = 0; i < errorResponse.error.Errors.length; i++) {
+              this.toastrService.error(errorResponse.error.Errors[i].ErrorMessage,"Doğrulama Hatası")
+            }
+          }
+        }
+        else{
+          this.toastrService.error(errorResponse.error.message,"Doğrulama Hatası")
+        }
+      })
+    }
+    else{
+      this.toastrService.error("Formunuz Eksik")
+    }
   }
 }
