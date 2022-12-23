@@ -7,9 +7,9 @@
       <tr>
         <li *ngFor="let color of colors">
           <span class="badge text-bg-secondary"></span>
-          {{ color.colorName }}
-          <span class="badge text-bg-secondary"></span>
           {{ color.id }}
+          <span class="badge text-bg-secondary"></span>
+          {{ color.colorName }}
           <span (click)="deleteColor(color)" class="badge text-bg-secondary"
             >Sil</span
           >
