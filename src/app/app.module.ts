@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,6 +21,8 @@ import { RentOperationComponent } from './components/rent-operation/rent-operati
 import { BrandOperationComponent } from './components/brand-operation/brand-operation.component';
 import { CarOperationComponent } from './components/car-operation/car-operation.component';
 import { ColorOperationComponent } from './components/color-operation/color-operation.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { ColorOperationComponent } from './components/color-operation/color-oper
     PaymentComponent,
     BrandOperationComponent,
     CarOperationComponent,
-    ColorOperationComponent
+    ColorOperationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,9 @@ import { ColorOperationComponent } from './components/color-operation/color-oper
       positionClass:"toast-bottom-right"
     })
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
