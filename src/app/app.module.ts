@@ -23,6 +23,7 @@ import { CarOperationComponent } from './components/car-operation/car-operation.
 import { ColorOperationComponent } from './components/color-operation/color-operation.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { RegisterComponent } from './components/register/register.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     BrandOperationComponent,
     CarOperationComponent,
     ColorOperationComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

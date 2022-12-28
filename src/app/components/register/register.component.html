@@ -1,0 +1,71 @@
+<div class="card text-black" style="border-radius: 25px">
+  <div class="card-body p-md-5">
+    <div class="row justify-content-center">
+      <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+        <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Kayıt ol</p>
+
+        <main class="form-register w-100 m-auto">
+          <form action="" [formGroup]="registerForm">
+            <div class="form-floating">
+              <input
+                formControlName="firstName"
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder="İsim"
+              />
+              <label for="firstName">İsim</label>
+            </div>
+
+            <br />
+            <div class="form-floating">
+              <input
+                formControlName="lastName"
+                type="text"
+                class="form-control"
+                id="lastName"
+                placeholder="Soyisim"
+              />
+              <label for="lastName">Soyisim</label>
+            </div>
+
+            <br />
+            <div class="form-floating">
+              <input
+                formControlName="email"
+                type="email"
+                class="form-control"
+                id="floatingInput"
+                placeholder="name@example.com"
+              />
+              <label for="floatingInput">E- posta</label>
+            </div>
+
+            <br />
+            <div class="form-floating">
+              <input
+                formControlName="password"
+                type="password"
+                class="form-control"
+                id="floatingPassword"
+                placeholder="Password"
+              />
+              <label for="floatingPassword">Parola</label>
+            </div>
+
+            <br />
+            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+              <button
+                type="button"
+                (click)="register()"
+                class="btn btn-primary btn-lg"
+              >
+                Kayıt ol
+              </button>
+            </div>
+          </form>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
