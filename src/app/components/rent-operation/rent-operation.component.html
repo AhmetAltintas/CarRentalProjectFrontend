@@ -1,6 +1,18 @@
 <div style="min-height: 120px">
     <div class="collapse collapse-horizontal" id="collapseWidthExample">
       <div class="card card-body" style="width: 300px">
+
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-bs-target="#collapseWidthExample"
+          aria-expanded="false"
+          aria-controls="collapseWidthExample"
+          (click)="checkFindeksScore()"
+        >
+          FINDEKS SORGULA
+        </button>
+        <br>
         <div class="content">
           <div class="col-md-12">
             <form action="" [formGroup]="addRentForm">
@@ -30,8 +42,6 @@
               </div>
             </form>
           </div>
-        </div>
-        <div class="mb-3">
         </div>
         <button
           class="btn btn-primary"

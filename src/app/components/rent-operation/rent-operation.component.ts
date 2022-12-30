@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Rent } from 'src/app/models/rent';
 import { Component, Input, OnInit } from '@angular/core';
+import { CustomerService } from 'src/app/services/customer.service';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class RentOperationComponent implements OnInit {
 
   @Input() carId: number;
   @Input() dailyPrice: number;
+  @Input() minFindeksScore:number;
 
   customerId: number = 1;
   rentDate: Date;
@@ -31,6 +33,7 @@ export class RentOperationComponent implements OnInit {
     private toastrService: ToastrService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private customerService: CustomerService
   ) {}
 
   ngOnInit(): void {
@@ -100,5 +103,22 @@ export class RentOperationComponent implements OnInit {
     } else {
       this.toastrService.error('Formunuz hatalı');
     }
+  }
+
+  checkFindeksScore(){
+    this.customerService.getById(this.customerId).subscribe(response=>{
+      let findeksScore:number=response.data.findeksScore;
+      if (findeksScore>=this.minFindeksScore) {
+        this.toastrService.success("Findeks puanınız yeterli.");
+      }else{
+        this.toastrService.error(response.message, "Findeks puanınız yetersiz.")
+      }
+      
+      console.log(response.data.findeksScore)
+      this.toastrService.info(response.data.findeksScore.toString());
+    },errorResponse=>{
+      this.toastrService.error(errorResponse.message, 'Hata!')
+    })
+    
   }
 }

@@ -8,4 +8,5 @@ export interface CarDetailDto{
     modelYear:number;
     dailyPrice:number;
     description:string;
+    minFindeksScore:number;
 }
