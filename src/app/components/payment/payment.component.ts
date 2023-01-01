@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Payment } from 'src/app/models/payment';
-import { Rent } from 'src/app/models/rent';
+import { Payment } from 'src/app/models/entities/payment';
+import { Rent } from 'src/app/models/entities/rent';
 import { PaymentService } from 'src/app/services/payment.service';
 import { RentService } from 'src/app/services/rent.service';
 
