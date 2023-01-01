@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { CarDetailDto } from 'src/app/models/carDetailDto';
+import { CarDetailDto } from 'src/app/models/entities/dtos/carDetailDto';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({

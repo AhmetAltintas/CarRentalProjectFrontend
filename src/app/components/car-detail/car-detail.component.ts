@@ -1,9 +1,10 @@
 import { ActivatedRoute } from '@angular/router';
-import { CarDetailDto } from 'src/app/models/carDetailDto';
-import { CarImage } from 'src/app/models/carImage';
+import { CarDetailDto } from 'src/app/models/entities/dtos/carDetailDto';
+import { CarImage } from 'src/app/models/entities/carImage';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 
@@ -17,7 +18,8 @@ export class CarDetailComponent implements OnInit{
   constructor(
     private carService: CarService,
     private carImageService: CarImageService,
-    private activatedRoute: ActivatedRoute) {}
+    private activatedRoute: ActivatedRoute,
+    ) {}
 
     dataLoaded = false;
     carDetail : CarDetailDto;

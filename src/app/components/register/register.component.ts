@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { TokenKey } from 'src/app/models/constants/local-storage-keys';
 import { AuthService } from 'src/app/services/auth.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +17,8 @@ export class RegisterComponent implements OnInit{
   constructor(
     private formBuilder:FormBuilder,
     private authService:AuthService,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private localStorageService:LocalStorageService
   ){}
 
   ngOnInit(): void {
@@ -36,9 +39,11 @@ export class RegisterComponent implements OnInit{
       console.log(this.registerForm.value)
 
       let registerModel = Object.assign({}, this.registerForm.value);
+      
       this.authService.register(registerModel).subscribe(
         response=> {
           this.toastrService.success(response.message);
+          this.localStorageService.save(TokenKey, response.data.token);
         },
         responseError=> {
           this.toastrService.error(responseError.error);
@@ -46,22 +51,4 @@ export class RegisterComponent implements OnInit{
       )
     }
   }
-
-  // login() {
-  //   if (this.loginForm.valid) {
-  //     console.log(this.loginForm.value);
-
-  //     let loginModel = Object.assign({}, this.loginForm.value);
-  //     this.authService.login(loginModel).subscribe(
-  //       (response) => {
-  //         this.toastrService.info(response.message);
-  //         localStorage.setItem('token', response.data.token);
-  //       },
-  //       (responseError) => {
-  //         console.log(responseError.error);
-  //         this.toastrService.error(responseError.error);
-  //       }
-  //     );
-  //   }
-  // }
 }

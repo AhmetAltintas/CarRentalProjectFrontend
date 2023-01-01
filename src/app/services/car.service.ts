@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CarDetailDto } from '../models/carDetailDto';
-import { ListResponseModel } from '../models/listResponseModel';
-import { ResponseModel } from '../models/responseModel';
-import { SingleResponseModel } from '../models/singleResponseModel';
+import { CarDetailDto } from '../models/entities/dtos/carDetailDto';
+import { ListResponseModel } from '../models/responseModels/listResponseModel';
+import { ResponseModel } from '../models/responseModels/responseModel';
+import { SingleResponseModel } from '../models/responseModels/singleResponseModel';
 
 @Injectable({
   providedIn: 'root',

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ListResponseModel } from '../models/listResponseModel';
-import { Rent } from '../models/rent';
-import { ResponseModel } from '../models/responseModel';
+import { ListResponseModel } from '../models/responseModels/listResponseModel';
+import { Rent } from '../models/entities/rent';
+import { ResponseModel } from '../models/responseModels/responseModel';
 
 @Injectable({
   providedIn: 'root'

@@ -2,29 +2,27 @@ import { RentService } from 'src/app/services/rent.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Rent } from 'src/app/models/rent';
+import { Rent } from 'src/app/models/entities/rent';
 import { Component, Input, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
-
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-rent-operation',
   styleUrls: ['./rent-operation.component.css'],
   templateUrl: './rent-operation.component.html',
 })
-
 export class RentOperationComponent implements OnInit {
   dataLoaded = false;
 
   @Input() carId: number;
   @Input() dailyPrice: number;
-  @Input() minFindeksScore:number;
+  @Input() minFindeksScore: number;
 
   customerId: number = 1;
   rentDate: Date;
   returnDate: Date;
 
-  
   addRentForm: FormGroup;
 
   constructor(
@@ -55,7 +53,6 @@ export class RentOperationComponent implements OnInit {
     });
   }
 
-
   calculateDiff() {
     const rentDate = new Date(this.rentDate);
     const returnDate = new Date(this.returnDate);
@@ -73,7 +70,6 @@ export class RentOperationComponent implements OnInit {
         )) /
         (1000 * 60 * 60 * 24)
     );
-    
   }
 
   checkRulesForAdding() {
@@ -103,22 +99,5 @@ export class RentOperationComponent implements OnInit {
     } else {
       this.toastrService.error('Formunuz hatalı');
     }
-  }
-
-  checkFindeksScore(){
-    this.customerService.getById(this.customerId).subscribe(response=>{
-      let findeksScore:number=response.data.findeksScore;
-      if (findeksScore>=this.minFindeksScore) {
-        this.toastrService.success("Findeks puanınız yeterli.");
-      }else{
-        this.toastrService.error(response.message, "Findeks puanınız yetersiz.")
-      }
-      
-      console.log(response.data.findeksScore)
-      this.toastrService.info(response.data.findeksScore.toString());
-    },errorResponse=>{
-      this.toastrService.error(errorResponse.message, 'Hata!')
-    })
-    
   }
 }
