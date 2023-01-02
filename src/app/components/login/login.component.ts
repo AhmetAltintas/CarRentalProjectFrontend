@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
         (response) => {
           this.toastrService.info(response.message);
           this.localStorageService.save(TokenKey, response.data.token)
-          localStorage.setItem('token', response.data.token);
         },
         (responseError) => {
           console.log(responseError.error);

@@ -24,6 +24,12 @@ import { ColorOperationComponent } from './components/color-operation/color-oper
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginPageButtonComponent } from './components/buttons/login-page-button/login-page-button.component';
+import { CommonChildComponentBaseComponent } from './components/bases/common-child-component-base/common-child-component-base.component';
+import { PublicChildComponentBaseComponent } from './components/bases/public-child-component-base/public-child-component-base.component';
+import { RegisterPageButtonComponent } from './components/buttons/register-page-button/register-page-button.component';
+import { HomePageButtonComponent } from './components/buttons/home-page-button/home-page-button.component';
+import { AccountOptionsComponent } from './components/account-options/account-options.component';
 
 
 @NgModule({
@@ -43,7 +49,13 @@ import { RegisterComponent } from './components/register/register.component';
     CarOperationComponent,
     ColorOperationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginPageButtonComponent,
+    CommonChildComponentBaseComponent,
+    PublicChildComponentBaseComponent,
+    RegisterPageButtonComponent,
+    HomePageButtonComponent,
+    AccountOptionsComponent
   ],
   imports: [
     BrowserModule,
