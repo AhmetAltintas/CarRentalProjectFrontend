@@ -30,6 +30,10 @@ import { PublicChildComponentBaseComponent } from './components/bases/public-chi
 import { RegisterPageButtonComponent } from './components/buttons/register-page-button/register-page-button.component';
 import { HomePageButtonComponent } from './components/buttons/home-page-button/home-page-button.component';
 import { AccountOptionsComponent } from './components/account-options/account-options.component';
+import { ProfilePageButtonComponent } from './components/buttons/profile-page-button/profile-page-button.component';
+import { UserChildComponentBaseComponent } from './components/bases/user-child-component-base/user-child-component-base.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { LogoutButtonComponent } from './components/buttons/logout-button/logout-button.component';
 
 
 @NgModule({
@@ -55,7 +59,11 @@ import { AccountOptionsComponent } from './components/account-options/account-op
     PublicChildComponentBaseComponent,
     RegisterPageButtonComponent,
     HomePageButtonComponent,
-    AccountOptionsComponent
+    AccountOptionsComponent,
+    ProfilePageButtonComponent,
+    UserChildComponentBaseComponent,
+    ProfileComponent,
+    LogoutButtonComponent
   ],
   imports: [
     BrowserModule,

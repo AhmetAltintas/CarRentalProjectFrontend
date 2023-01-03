@@ -18,7 +18,7 @@ export class AccountOptionsComponent implements OnInit{
 
   ngOnInit(): void {
     if (this.loggedIn())
-    this.getCurrentUserDTO()
+      this.getCurrentUserDTO()
   }
 
   loggedIn() {
