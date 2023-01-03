@@ -20,4 +20,8 @@ export class RouterService {
   registerPage() {
     this.router.navigate(["register"])
   }
+
+  profilePage(){
+    this.router.navigate(['profile'])
+  }
 }

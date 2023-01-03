@@ -7,6 +7,7 @@ import { CarComponent } from './components/car/car.component';
 import { ColorOperationComponent } from './components/color-operation/color-operation.component';
 import { LoginComponent } from './components/login/login.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentOperationComponent } from './components/rent-operation/rent-operation.component';
 
@@ -22,7 +23,9 @@ const routes: Routes = [
   { path: "coloroperation", component:ColorOperationComponent},
   { path: "caroperation", component:CarOperationComponent},
   { path: "login", component:LoginComponent},
-  { path: "register", component:RegisterComponent}
+  { path: "register", component:RegisterComponent},
+  { path: "profile", component:ProfileComponent},
+  
 ];
 
 @NgModule({
