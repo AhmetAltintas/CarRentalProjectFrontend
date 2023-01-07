@@ -1,0 +1,9 @@
+<div
+  class="border"
+  style="background-color: black"
+  *ngIf="loggedIn() && currentCustomer"
+>
+  <div class="nav-link disabled">
+    Findeks Puanınız: <strong>{{ currentCustomer.findeksScore }}</strong>
+  </div>
+</div>

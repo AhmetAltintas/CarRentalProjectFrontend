@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { TokenKey } from '../models/constants/local-storage-keys';
 import { AdminRole } from '../models/constants/roles';
+import { UpdatePasswordDTO } from '../models/entities/dtos/updatePasswordDTO';
 import { LoginModel } from '../models/loginModel';
 import { RegisterModel } from '../models/registerModel';
 import { ResponseModel } from '../models/responseModels/responseModel';
@@ -84,5 +85,9 @@ export class AuthService {
       }
     }
     return false
+  }
+
+  updatePassword(updatePasswordDTO:UpdatePasswordDTO):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "updatePassword", updatePasswordDTO)
   }
 }

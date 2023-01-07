@@ -1,3 +1,5 @@
+import { CarImage } from "../carImage";
+
 export interface CarDetailDto{
     id:number;
     modelName:string;
@@ -9,4 +11,5 @@ export interface CarDetailDto{
     dailyPrice:number;
     description:string;
     minFindeksScore:number;
+    carImages:CarImage[]
 }

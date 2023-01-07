@@ -1,0 +1,19 @@
+<div *ngIf="carDetail">
+  <div class="border">
+      <app-car-images-slider-by-car-id [currentCarIdFromParent]="carDetail.id"></app-car-images-slider-by-car-id>
+  </div>
+  <div class="card text-center">
+      <div class="card-header">
+          {{carDetail.brandName}}
+      </div>
+      <div class="card-body">
+          <h5 class="card-title">{{carDetail.modelName}}</h5>
+          <p class="card-text">{{carDetail.description}}</p>
+          <p class="card-text">Findeks Puanı:<strong> {{carDetail.minFindeksScore}}</strong></p>
+          <app-route-to-rent-page-button classFromParent="btn btn-success w-25" [currentCarIdFromParent]="carDetail.id"></app-route-to-rent-page-button>
+      </div>
+      <div class="card-footer">
+          <strong>{{carDetail.dailyPrice|currency}}</strong>
+      </div>
+  </div>
+</div>
