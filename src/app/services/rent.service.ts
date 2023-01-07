@@ -4,13 +4,16 @@ import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/responseModels/listResponseModel';
 import { Rent } from '../models/entities/rent';
 import { ResponseModel } from '../models/responseModels/responseModel';
+import { Payment } from '../models/entities/payment';
+import { PaymentService } from './payment.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentService {
   apiUrl = 'https://localhost:44332/api/';
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private paymentService:PaymentService, private toastrService:ToastrService) {}
 
   getRentDetails(): Observable<ListResponseModel<Rent>> {
     let newPath = this.apiUrl + "rents/getrentdetails"
@@ -24,5 +27,14 @@ export class RentService {
   checkRulesForAdding(rent:Rent):Observable<ResponseModel> {
     let newPath = this.apiUrl + "rents/rulesforadding"
     return this.httpClient.post<ResponseModel>(newPath,rent);
+  }
+
+  payAndRent(payment: Payment, rent: Rent){
+    this. paymentService.pay(payment).subscribe(response=>{
+      this.toastrService.success(response.message)
+      this.addRent(rent)
+    }, responseError=> {
+      this.toastrService.error(responseError.error.message)
+    })
   }
 }
