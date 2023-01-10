@@ -1,1 +1,23 @@
-<p>rent-detail-list works!</p>
+<div>
+    <h4>Detaylı Kiralama Geçmişi Listesi</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Marka</th>
+                <th>İsim Soyisim</th>
+                <th>Kiralama Tarihi</th>
+                <th>Teslim Tarihi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let rentDetailDTO of rentDetailDTOs">
+                <td>{{rentDetailDTO.id}}</td>
+                <td>{{rentDetailDTO.brandName}}</td>
+                <td>{{rentDetailDTO.firstName}} + {{rentDetailDTO.lastName}}</td>
+                <td>{{rentDetailDTO.rentDate|date}}</td>
+                <td>{{rentDetailDTO.returnDate|date}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

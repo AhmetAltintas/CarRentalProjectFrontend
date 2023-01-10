@@ -18,11 +18,13 @@
           <div class="mt-2 row">
               <div class="col">
                   <label for="expiryMonth">Son Kullanım Ayı</label>
-                  <app-small-number-input id="expiryMonth" [minValue]="1" [maxValue]="12" placeholder="Son Kullanım Ayı" formControlName="expiryMonth"></app-small-number-input> 
+                  <input type="number" id="expiryMonth" name="expiryMonth" placeholder="Ay" class="form-control" formControlName="expiryMonth">
+                  <!-- <app-small-number-input id="expiryMonth" [minValue]="1" [maxValue]="12" placeholder="Son Kullanım Ayı" formControlName="expiryMonth" name="expiryMonth"></app-small-number-input>  -->
               </div>
               <div class="col">
                   <label for="expiryYear">Son Kullanım Yılı</label>
-                  <app-small-number-input id="expiryYear" [minValue]="1" [maxValue]="12" placeholder="Son Kullanım Yılı" formControlName="expiryYear"></app-small-number-input>
+                  <input type="number" id="expiryYear" name="expiryYear" placeholder="Yıl" class="form-control" formControlName="expiryYear">
+                  <!-- <app-small-number-input id="expiryYear" [minValue]="1" [maxValue]="99" placeholder="Son Kullanım Yılı" formControlName="expiryYear" name="expiryYear"></app-small-number-input> -->
               </div>
           </div>
           <div class="mt-2">

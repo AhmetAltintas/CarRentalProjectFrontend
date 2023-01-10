@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TokenKey } from 'src/app/models/constants/local-storage-keys';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
+import { RouterService } from 'src/app/services/router.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit{
     private formBuilder:FormBuilder,
     private authService:AuthService,
     private toastrService:ToastrService,
-    private localStorageService:LocalStorageService
+    private routerService: RouterService
   ){}
 
   ngOnInit(): void {
@@ -39,11 +40,11 @@ export class RegisterComponent implements OnInit{
       let registerModel = Object.assign({}, this.registerForm.value);
       this.authService.register(registerModel).subscribe(
         response=> {
-          this.toastrService.success(response.message);
-          this.localStorageService.save(TokenKey, response.data.token);
+          this.toastrService.success(response.message, "Giriş ekranına yönlendiriliyorsunuz");
+          this.routerService.loginPage()
         },
         responseError=> {
-          this.toastrService.error(responseError.error);
+          this.toastrService.error(responseError.error.message);
         }
       )
     }else this.toastrService.error("Form eksik")

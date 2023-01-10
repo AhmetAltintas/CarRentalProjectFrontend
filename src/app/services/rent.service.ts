@@ -7,17 +7,20 @@ import { ResponseModel } from '../models/responseModels/responseModel';
 import { Payment } from '../models/entities/payment';
 import { PaymentService } from './payment.service';
 import { ToastrService } from 'ngx-toastr';
+import { RouterService } from './router.service';
+import { RentDetailDTO } from '../models/entities/dtos/rent-detail-dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentService {
   apiUrl = 'https://localhost:44332/api/';
-  constructor(private httpClient: HttpClient, private paymentService:PaymentService, private toastrService:ToastrService) {}
 
-  getRentDetails(): Observable<ListResponseModel<Rent>> {
+  constructor(private httpClient: HttpClient, private paymentService:PaymentService, private toastrService:ToastrService, private routerService:RouterService) {}
+
+  getRentDetails(): Observable<ListResponseModel<RentDetailDTO>> {
     let newPath = this.apiUrl + "rents/getrentdetails"
-    return this.httpClient.get<ListResponseModel<Rent>>(newPath);
+    return this.httpClient.get<ListResponseModel<RentDetailDTO>>(newPath);
   }
 
   addRent(rent:Rent):Observable<ResponseModel>{
@@ -31,8 +34,14 @@ export class RentService {
 
   payAndRent(payment: Payment, rent: Rent){
     this. paymentService.pay(payment).subscribe(response=>{
+      console.log(rent)
+      this.addRent(rent).subscribe(rentResponse=>{
+        this.toastrService.success(rentResponse.message)
+      }, rentResponseError=>{
+        this.toastrService.error(rentResponseError.error.message)
+      })
       this.toastrService.success(response.message)
-      this.addRent(rent)
+      this.routerService.homePage();
     }, responseError=> {
       this.toastrService.error(responseError.error.message)
     })
