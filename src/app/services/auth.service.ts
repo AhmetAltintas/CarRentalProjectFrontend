@@ -71,18 +71,16 @@ export class AuthService {
     let token = this.getToken
     return !this.jwtHelperService.isTokenExpired(token);
   }
-
+ 
   isAdmin() {
     if(!this.loggedIn()) return false
 
     let decodedToken = this.getDecodedToken
 
-    let roleString = Object.keys(decodedToken).filter(t=>t.endsWith("/role"))[0]
-    
+    let roleString = Object.keys(decodedToken).filter(t=>t.endsWith("/role"))[0];
+
     if (roleString) {
-      for (let i = 0; i < decodedToken[roleString].length; i++) {
-        if (decodedToken[roleString][i] === AdminRole) return true
-      }
+      return decodedToken[roleString].includes(AdminRole);
     }
     return false
   }
