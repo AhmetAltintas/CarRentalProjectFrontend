@@ -60,6 +60,14 @@ import { SmallNumberInputComponent } from './form-controls/small-number-input/sm
 import { RentComponent } from './components/user/pages/rent/rent.component';
 import { RouteToRentPageButtonComponent } from './components/public/layouts/router-buttons/route-to-rent-page-button/route-to-rent-page-button.component';
 import { ShowPasswordOnHoverDirective } from './directives/show-password-on-hover.directive';
+import { AddBrandPageButtonComponent } from './components/admin/layouts/router-buttons/add-brand-page-button/add-brand-page-button.component';
+import { AddCarPageButtonComponent } from './components/admin/layouts/router-buttons/add-car-page-button/add-car-page-button.component';
+import { AddColorPageButtonComponent } from './components/admin/layouts/router-buttons/add-color-page-button/add-color-page-button.component';
+import { BrandListPageButtonComponent } from './components/admin/layouts/router-buttons/brand-list-page-button/brand-list-page-button.component';
+import { CarDetailListPageButtonComponent } from './components/admin/layouts/router-buttons/car-detail-list-page-button/car-detail-list-page-button.component';
+import { ColorListPageButtonComponent } from './components/admin/layouts/router-buttons/color-list-page-button/color-list-page-button.component';
+import { CustomerListPageButtonComponent } from './components/admin/layouts/router-buttons/customer-list-page-button/customer-list-page-button.component';
+import { RentDetailListPageButtonComponent } from './components/admin/layouts/router-buttons/rent-detail-list-page-button/rent-detail-list-page-button.component';
 
 
 
@@ -120,7 +128,15 @@ import { ShowPasswordOnHoverDirective } from './directives/show-password-on-hove
     CommonChildComponentBaseComponent,
     SmallNumberInputComponent,
     RouteToRentPageButtonComponent,
-    ShowPasswordOnHoverDirective
+    ShowPasswordOnHoverDirective,
+    AddBrandPageButtonComponent,
+    AddCarPageButtonComponent,
+    AddColorPageButtonComponent,
+    BrandListPageButtonComponent,
+    CarDetailListPageButtonComponent,
+    ColorListPageButtonComponent,
+    CustomerListPageButtonComponent,
+    RentDetailListPageButtonComponent
     ],
   imports: [
     BrowserModule,

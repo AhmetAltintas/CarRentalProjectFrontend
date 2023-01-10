@@ -52,4 +52,37 @@ export class RouterService {
   paymentPage(){
     this.router.navigate(["pay"])
   }
+
+  addBrandPage() {
+    this.router.navigate(["add-brand"])
+  }
+
+  addCarPage() {
+    this.router.navigate(["add-car"])
+  }
+
+  addColorPage() {
+    this.router.navigate(["add-color"])
+  }
+
+  brandListPage() {
+    this.router.navigate(["brand-list"])
+  }
+
+  colorListPage() {
+    this.router.navigate(["color-list"])
+  }
+
+  rentDetailListPage() {
+    this.router.navigate(["rent-detail-list"])
+  }
+
+  customerListPage() {
+    this.router.navigate(["customer-list"])
+  }
+
+  carDetailListPage() {
+    this.router.navigate(["car-detail-list"])
+  }
+
 }

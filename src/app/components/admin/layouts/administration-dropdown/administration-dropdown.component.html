@@ -1,1 +1,18 @@
-<p>administration-dropdown works!</p>
+<div class="dropdown" *ngIf="isAdmin()">
+    <button [class]="classFromParent" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+      {{innerHTML}}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><app-add-car-page-button classFromParent="dropdown-item"></app-add-car-page-button></li>
+        <li><app-add-brand-page-button classFromParent="dropdown-item"></app-add-brand-page-button></li>
+        <li><app-add-color-page-button classFromParent="dropdown-item"></app-add-color-page-button></li>
+        <li>
+          <hr class="dropdown-divider">
+        </li>
+        <li><app-car-detail-list-page-button classFromParent="dropdown-item"></app-car-detail-list-page-button></li>
+        <li><app-brand-list-page-button classFromParent="dropdown-item"></app-brand-list-page-button></li>
+        <li><app-color-list-page-button classFromParent="dropdown-item"></app-color-list-page-button></li>
+        <li><app-customer-list-page-button classFromParent="dropdown-item"></app-customer-list-page-button></li>
+        <li><app-rent-detail-list-page-button classFromParent="dropdown-item"></app-rent-detail-list-page-button></li>
+    </ul>
+  </div>
