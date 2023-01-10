@@ -69,8 +69,7 @@ import { ShowPasswordOnHoverDirective } from './directives/show-password-on-hove
     AppComponent,
     CarComponent,
     RentComponent,
-    NaviComponent,
-    
+    NaviComponent, 
     CarDetailComponent,
     PaymentComponent,
     LoginComponent,
@@ -122,7 +121,7 @@ import { ShowPasswordOnHoverDirective } from './directives/show-password-on-hove
     SmallNumberInputComponent,
     RouteToRentPageButtonComponent,
     ShowPasswordOnHoverDirective
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -59,7 +59,7 @@ export class RentComponent implements OnInit {
         this.localStorageService.save(RentKey, rent)
         this.routerService.paymentPage()
       }, errorResponse=>{
-        this.toastrService.error(errorResponse.error)
+        this.toastrService.error(errorResponse.error.message)
       })
     }
     else this.toastrService.error("Form eksik")

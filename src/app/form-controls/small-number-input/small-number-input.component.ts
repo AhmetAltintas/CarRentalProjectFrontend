@@ -14,7 +14,7 @@ export class SmallNumberInputComponent implements OnInit, ControlValueAccessor {
 
   constructor() {
     this.minValue = 0
-    this.maxValue = 10
+    this.maxValue = 99
     this.placeholder = ""
     this.disabled = false
   }
