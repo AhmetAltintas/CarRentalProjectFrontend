@@ -2,6 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CarDetailDto } from 'src/app/models/entities/dtos/carDetailDto';
 import { CarService } from 'src/app/services/car.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-car',
@@ -16,6 +17,7 @@ export class CarComponent implements OnInit {
   constructor(
     private carService: CarService,
     private activatedRoute: ActivatedRoute,
+    private authService:AuthService
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +55,4 @@ export class CarComponent implements OnInit {
   setCurrentCar(car: CarDetailDto) {
     this.currentCar = car;
   }
-
-  
 }

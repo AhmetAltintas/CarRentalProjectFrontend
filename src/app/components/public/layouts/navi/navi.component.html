@@ -13,11 +13,18 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <app-administration-dropdown></app-administration-dropdown>
+        </li>
+      </ul>
       <form class="d-flex">
+        <div class="ms-2">
+          <app-findeks-point-board></app-findeks-point-board>
+        </div>
         <div class="ms-2">
           <app-account-options></app-account-options>
         </div>
-
         <div>
           <app-login-page-button
             classFromParent="btn btn-outline-success"
