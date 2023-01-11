@@ -34,7 +34,7 @@ export class UpdateBrandComponent
 
   createUpdateFormGroup() {
     this.updateFormGroup = this.formBuilder.group({
-      name: [this.currentBrandFromParent.brandName, Validators.required],
+      brandName: [this.currentBrandFromParent.brandName, Validators.required],
     });
   }
 

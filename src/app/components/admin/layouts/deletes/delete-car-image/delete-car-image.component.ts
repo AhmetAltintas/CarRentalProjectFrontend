@@ -50,6 +50,7 @@ export class DeleteCarImageComponent extends AdminChildComponentBaseComponent im
   }
 
   get getCurrentCarId(){
+    if(!this.currentCarImagesFromParent) return null
     return this.currentCarImagesFromParent.length > 0 ? this.currentCarImagesFromParent[0].carId : ""
   }
 }
