@@ -68,6 +68,7 @@ import { CarDetailListPageButtonComponent } from './components/admin/layouts/rou
 import { ColorListPageButtonComponent } from './components/admin/layouts/router-buttons/color-list-page-button/color-list-page-button.component';
 import { CustomerListPageButtonComponent } from './components/admin/layouts/router-buttons/customer-list-page-button/customer-list-page-button.component';
 import { RentDetailListPageButtonComponent } from './components/admin/layouts/router-buttons/rent-detail-list-page-button/rent-detail-list-page-button.component';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 
 
@@ -151,6 +152,7 @@ import { RentDetailListPageButtonComponent } from './components/admin/layouts/ro
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

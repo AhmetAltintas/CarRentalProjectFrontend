@@ -50,6 +50,7 @@ export class AddCarComponent implements OnInit {
       this.carService.addCar(car).subscribe(response=>{
         this.toastrService.success(response.message)
       }, errorResponse=>{
+        console.log(errorResponse.error)
         this.toastrService.error(errorResponse.error.message)
       })
     }

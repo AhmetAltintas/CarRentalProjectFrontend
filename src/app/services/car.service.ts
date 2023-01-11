@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Car } from '../models/entities/dtos/car';
@@ -40,7 +40,8 @@ export class CarService {
   }
 
   addCar(car: Car): Observable<ResponseModel> {
-    return this.httpClient.post<ResponseModel>(this.apiUrl + 'add', car);
+    // let headers = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
+    return this.httpClient.post<ResponseModel>(this.apiUrl + 'add', car); //, {headers}
   }
 
   update(car: Car): Observable<ResponseModel> {
