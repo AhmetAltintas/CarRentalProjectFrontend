@@ -69,6 +69,7 @@ import { ColorListPageButtonComponent } from './components/admin/layouts/router-
 import { CustomerListPageButtonComponent } from './components/admin/layouts/router-buttons/customer-list-page-button/customer-list-page-button.component';
 import { RentDetailListPageButtonComponent } from './components/admin/layouts/router-buttons/rent-detail-list-page-button/rent-detail-list-page-button.component';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 
@@ -146,6 +147,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    FileUploadModule,
     ToastrModule.forRoot({
       positionClass:"toast-bottom-right"
     })

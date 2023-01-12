@@ -40,8 +40,7 @@ export class CarService {
   }
 
   addCar(car: Car): Observable<ResponseModel> {
-    // let headers = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("token"))
-    return this.httpClient.post<ResponseModel>(this.apiUrl + 'add', car); //, {headers}
+    return this.httpClient.post<ResponseModel>(this.apiUrl + 'add', car);
   }
 
   update(car: Car): Observable<ResponseModel> {

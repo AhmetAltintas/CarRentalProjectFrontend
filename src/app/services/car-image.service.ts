@@ -21,4 +21,8 @@ export class CarImageService {
   delete(id: number) {
     return this.httpClient.post<ResponseModel>(this.apiUrl + "delete?id=" + id, null)
   }
+
+  add(file:any):Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.apiUrl + "add", file)
+  }
 }
