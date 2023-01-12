@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Color } from 'src/app/models/entities/color';
 import { AuthService } from 'src/app/services/auth.service';
 import { ColorService } from 'src/app/services/color.service';
@@ -12,7 +13,7 @@ import { AdminChildComponentBaseComponent } from '../../../bases/admin-child-com
 export class DeleteColorComponent extends AdminChildComponentBaseComponent implements OnInit{
   @Input() currentColorFromParent:Color
 
-  constructor(private colorService:ColorService, public override authService:AuthService) { 
+  constructor(private colorService:ColorService, public override authService:AuthService, private toastrService:ToastrService) { 
     super(authService) 
     this.innerHTML = "Sil"
   }
@@ -21,6 +22,13 @@ export class DeleteColorComponent extends AdminChildComponentBaseComponent imple
   }
 
   delete(){
-    this.colorService.delete(this.currentColorFromParent)
+    this.colorService.delete(this.currentColorFromParent).subscribe(response=>{
+      this.toastrService.success(response.message)
+      window.location.reload();
+    },errorResponse=>{
+      this.toastrService.error(errorResponse.error)
+      console.log(errorResponse.error)
+    })
+    console.log(this.currentColorFromParent)
   }
 }

@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
-import { ResponseModel } from 'src/app/models/responseModels/responseModel';
 import { CarImageService } from 'src/app/services/car-image.service';
 
 @Component({
@@ -12,11 +11,10 @@ import { CarImageService } from 'src/app/services/car-image.service';
 })
 export class AddCarImageComponent implements OnInit {
   
-  uploader: FileUploader;
-  hasBaseDropZoneOver: boolean;
-  response: string;
+  currentCarId:number
+  selectedFile:File;
+  imagePath:string="wwwroot\Images"
 
-  currentCarId: number
   constructor(
     private carImageService:CarImageService,
     private toastrService:ToastrService,
@@ -26,57 +24,30 @@ export class AddCarImageComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.currentCarId = params["carId"]
-      this.initializeUploader(this.currentCarId)
     })
+    console.log(this.currentCarId)
+
   }
 
-  initializeUploader(carId: number) {
-    this.uploader = new FileUploader({
-      url: this.carImageService.apiUrl + "add?carId=" + carId,
-      removeAfterUpload: true,
-      allowedFileType: ["image"]
-    });
 
-    this.onBefore()
-
-    this.onError();
-
-    this.onSuccess()
-
-    this.hasBaseDropZoneOver = false;
-
-    this.response = '';
-
-    this.uploader.response.subscribe(res => this.response = res);
+  onFileSelected(event:any){
+    this.selectedFile=<File>event.target.files[0];
   }
 
-  onBefore() {
-    this.uploader.onBeforeUploadItem = (item) => {
-      item.withCredentials = false;
-    }
-  }
 
-  onSuccess() {
-    this.uploader.onSuccessItem = (item, response, status, headers) => {
-      if (response) {
-        let newResponse: ResponseModel = JSON.parse(response)
-        this.toastrService.success(newResponse.message)
-        window.location.reload()
-      }
-    }
-  }
 
-  onError() {
-    this.uploader.onErrorItem = (item, response) => {
-      if (response) {
-        let newResponse: any = JSON.parse(response)
-        let message = newResponse.message ?? newResponse.Message
-        this.toastrService.error(message)
-      }
-    }
-  }
+  onUpload(){
+    const filedata= new FormData();
+    filedata.append('file', this.selectedFile, this.selectedFile.name);
+    filedata.append("carId", this.currentCarId.toString());
+    filedata.append("imagePath", this.imagePath)
 
-  public fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
+    this.carImageService.add(filedata).subscribe(response=>{
+      this.toastrService.success(response.message)
+    }, errorResponse=> {
+      console.log(errorResponse.error)
+      this.toastrService.error(errorResponse.error)
+    })
+    
   }
 }
