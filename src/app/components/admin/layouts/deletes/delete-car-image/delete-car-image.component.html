@@ -9,12 +9,12 @@
   <div class="modal-dialog">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Resim Sil</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Silmek istediğiniz görseli seçiniz !</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
               <div *ngFor="let carImage of currentCarImagesFromParent" class="border mt-1">
-                  <img type="button" [src]="getFullImagePath(carImage.imagePath)" class="w-100" (click)="delete(carImage.id)"/>
+                  <img type="button" [src]="getFullImagePath(carImage.imagePath)" class="w-100" (click)="delete(carImage)"/>
               </div>
           </div>
           <div class="modal-footer">

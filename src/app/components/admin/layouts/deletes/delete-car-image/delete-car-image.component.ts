@@ -25,12 +25,13 @@ export class DeleteCarImageComponent extends AdminChildComponentBaseComponent im
   ngOnInit(): void {
   }
 
-  delete(id: number) {
-    if (confirm(AreYouSureForDeleteThisImage))
-      this.carImageService.delete(id).subscribe(response => {
+  delete(image: CarImage) {
+    console.log(image.id)
+    if (confirm(AreYouSureForDeleteThisImage)){
+      this.carImageService.delete(image).subscribe(response => {
         this.toastrService.success(response.message)
-        this.deleteFromArray(id)
-      }, errorResponse => this.templatesService.errorResponse(errorResponse))
+        this.deleteFromArray(image.id)
+      }, errorResponse => this.templatesService.errorResponse(errorResponse))}
   }
 
   deleteFromArray(id: number) {
@@ -47,8 +48,6 @@ export class DeleteCarImageComponent extends AdminChildComponentBaseComponent im
   }
 
   get getCurrentCarId() {
-    if (this.currentCarImagesFromParent != null)
-    return this.currentCarImagesFromParent[0].carId
-    else return null
+    return this.currentCarImagesFromParent.length > 0 ? this.currentCarImagesFromParent[0].carId : ""
   }
 }
