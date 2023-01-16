@@ -18,12 +18,15 @@ export class CarDetailListComponent implements OnInit {
   ngOnInit(): void {
       this.getCarDetails();
       this.getAll();
+     
   }
 
   getCarDetails(){
     this.carService.getCarDetails().subscribe(response=>{
       this.carDetailDTOs = response.data
+      console.log(response.data)
     })
+
   }
 
   getAll(){

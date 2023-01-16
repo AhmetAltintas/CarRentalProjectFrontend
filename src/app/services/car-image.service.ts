@@ -10,7 +10,7 @@ import { ResponseModel } from '../models/responseModels/responseModel';
   providedIn: 'root',
 })
 export class CarImageService {
-  url = ApiUrl + "carimages/"
+  url = ApiUrl + "carImages/"
   constructor(private httpClient: HttpClient) {}
 
   getCarImagesByCarId(carId: number): Observable<ListResponseModel<CarImage>> {
@@ -18,8 +18,8 @@ export class CarImageService {
     return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
   }
 
-  delete(id: number) {
-    return this.httpClient.post<ResponseModel>(this.url + "delete?id=" + id, null)
+  delete(image: CarImage):Observable<ResponseModel> {
+    return this.httpClient.post<ResponseModel>(this.url + "delete", image)
   }
 
   add(file:any):Observable<ResponseModel> {
