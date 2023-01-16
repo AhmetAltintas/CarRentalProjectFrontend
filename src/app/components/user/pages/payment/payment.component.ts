@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RentKey } from 'src/app/models/constants/local-storage-keys';
+import { FormIsMissing, SaveYourCreditCard } from 'src/app/models/constants/messages';
 import { Payment } from 'src/app/models/entities/payment';
 import { Rent } from 'src/app/models/entities/rent';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
@@ -48,12 +49,12 @@ export class PaymentComponent implements OnInit{
 
       this.askForSave(payment);
       this.rentService.payAndRent(payment, rent)
-    }else this.toastrService.error("form eksik")
+    }else this.toastrService.error(FormIsMissing)
   }
 
   askForSave(payment:Payment){
     this.paymentService.checkIfThisCardIsAlreadySavedForThisCustomer(payment).subscribe(response=>{
-      if (confirm("Ödeme bilginiz kayıt edilsin mi?")) this.paymentService.add(payment)
+      if (confirm(SaveYourCreditCard)) this.paymentService.add(payment)
     })
   }
 }

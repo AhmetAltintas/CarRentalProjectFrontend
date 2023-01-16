@@ -7,6 +7,7 @@ import {
 } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { YouAreNotAuthorized } from '../models/constants/messages';
 import { AuthService } from '../services/auth.service';
 import { RouterService } from '../services/router.service';
 
@@ -30,7 +31,7 @@ constructor(
     | UrlTree {
     if (this.authService.isAdmin()) return true;
 
-    this.toastrService.error("Yetkiniz yok")
+    this.toastrService.error(YouAreNotAuthorized)
     this.routerService.homePage();
     return false;
   }

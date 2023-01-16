@@ -3,10 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { Brand } from 'src/app/models/entities/brand';
 import { Color } from 'src/app/models/entities/color';
-import { Car } from 'src/app/models/entities/dtos/car';
+import { Car } from 'src/app/models/entities/car';
 import { BrandService } from 'src/app/services/brand.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
+import { FormIsMissing } from 'src/app/models/constants/messages';
 
 @Component({
   selector: 'app-add-car',
@@ -49,12 +50,13 @@ export class AddCarComponent implements OnInit {
       let car: Car = Object.assign({}, this.addFormGroup.value)
       this.carService.addCar(car).subscribe(response=>{
         this.toastrService.success(response.message)
+        window.location.reload();
       }, errorResponse=>{
         console.log(errorResponse.error)
         this.toastrService.error(errorResponse.error.message)
       })
     }
-    else this.toastrService.error("Form eksik")
+    else this.toastrService.error(FormIsMissing)
   }
 
   getBrands() {

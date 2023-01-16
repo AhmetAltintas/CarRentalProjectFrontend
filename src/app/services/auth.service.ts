@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { TokenKey } from '../models/constants/local-storage-keys';
 import { AdminRole } from '../models/constants/roles';
+import { ApiUrl } from '../models/constants/url';
 import { UpdatePasswordDTO } from '../models/entities/dtos/updatePasswordDTO';
 import { LoginModel } from '../models/loginModel';
 import { RegisterModel } from '../models/registerModel';
@@ -18,7 +19,8 @@ import { LocalStorageService } from './local-storage.service';
 export class AuthService {
   jwtHelperService: JwtHelperService = new JwtHelperService();
 
-  apiUrl = 'https://localhost:44332/api/auth/';
+  url = ApiUrl + "auth/"
+
   constructor(
     private httpClient: HttpClient,
     private localStorageService: LocalStorageService
@@ -26,14 +28,14 @@ export class AuthService {
 
   register(registerModel: RegisterModel): Observable<SingleResponseModel<TokenModel>> {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(
-      this.apiUrl + 'register',
+      this.url + 'register',
       registerModel
     );
   }
 
   login(loginModel: LoginModel): Observable<SingleResponseModel<TokenModel>> {
     return this.httpClient.post<SingleResponseModel<TokenModel>>(
-      this.apiUrl + 'login',
+      this.url + 'login',
       loginModel
     );
   }
@@ -86,6 +88,6 @@ export class AuthService {
   }
 
   updatePassword(updatePasswordDTO:UpdatePasswordDTO):Observable<ResponseModel>{
-    return this.httpClient.post<ResponseModel>(this.apiUrl + "updatePassword", updatePasswordDTO)
+    return this.httpClient.post<ResponseModel>(this.url + "updatePassword", updatePasswordDTO)
   }
 }
