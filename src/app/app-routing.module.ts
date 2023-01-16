@@ -19,6 +19,7 @@ import { AddColorComponent } from './components/admin/pages/adds/add-color/add-c
 import { AdminGuard } from './guards/admin.guard';
 import { LoginGuard } from './guards/login.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { DeleteCarImageComponent } from './components/admin/layouts/deletes/delete-car-image/delete-car-image.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: CarComponent },
@@ -39,7 +40,7 @@ const routes: Routes = [
   { path: "add-color", component: AddColorComponent, canActivate: [AdminGuard] },
   { path: "login", component:LoginComponent, canActivate: [GuestGuard] },
   { path: "register", component:RegisterComponent, canActivate: [GuestGuard] },
-  { path: "profile", component:ProfileComponent, canActivate: [LoginGuard] },
+  { path: "profile", component:ProfileComponent, canActivate: [LoginGuard] }
 
   
 ];

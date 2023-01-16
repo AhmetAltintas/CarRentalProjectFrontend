@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { FormIsMissing } from 'src/app/models/constants/messages';
 import { UpdateEmailDTO } from 'src/app/models/entities/dtos/updateEmailDTO';
 import { UserDTO } from 'src/app/models/entities/dtos/userDto';
 import { AuthService } from 'src/app/services/auth.service';
@@ -42,9 +43,10 @@ export class UpdateEmailComponent extends UserChildComponentBaseComponent implem
       updateEmailDTO.id = this.currentUserDTOFromParent.id
       this.userService.updateEmail(updateEmailDTO).subscribe(response=>{
         this.toastrService.success(response.message)
+        window.location.reload();
       },responseError=>{
         this.toastrService.error(responseError.error.message)
       })
-    }else this.toastrService.error("Form eksik")
+    }else this.toastrService.error(FormIsMissing)
   }
 }

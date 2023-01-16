@@ -24,7 +24,9 @@ export class DeleteColorComponent extends AdminChildComponentBaseComponent imple
   delete(){
     this.colorService.delete(this.currentColorFromParent).subscribe(response=>{
       this.toastrService.success(response.message)
-      window.location.reload();
+      setTimeout(function () {
+        window.location.reload();
+      }, 1000);
     },errorResponse=>{
       this.toastrService.error(errorResponse.error)
       console.log(errorResponse.error)

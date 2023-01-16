@@ -1,9 +1,12 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { TemplatesService } from './../../../../../services/templates.service';
 import { ToastrService } from 'ngx-toastr';
-import { CarImage } from 'src/app/models/entities/carImage';
-import { AuthService } from 'src/app/services/auth.service';
-import { CarImageService } from 'src/app/services/car-image.service';
+import { AuthService } from './../../../../../services/auth.service';
+import { CarImageService } from './../../../../../services/car-image.service';
+import { Component, Input, OnInit } from '@angular/core';
 import { AdminChildComponentBaseComponent } from '../../../bases/admin-child-component-base/admin-child-component-base.component';
+import { CarImage } from 'src/app/models/entities/carImage';
+import { BaseUrl } from 'src/app/models/constants/url';
+import { AreYouSureForDeleteThisImage } from 'src/app/models/constants/messages';
 
 @Component({
   selector: 'app-delete-car-image',
@@ -13,44 +16,39 @@ import { AdminChildComponentBaseComponent } from '../../../bases/admin-child-com
 export class DeleteCarImageComponent extends AdminChildComponentBaseComponent implements OnInit {
   @Input() currentCarImagesFromParent: CarImage[]
 
-  constructor(
-    private carImageService:CarImageService,
-    private toastrService: ToastrService,
-    public override authService:AuthService
-  ){
+  constructor(private carImageService: CarImageService, public override authService: AuthService,
+    private toastrService: ToastrService, private templatesService: TemplatesService) {
     super(authService)
     this.innerHTML = "Sil"
   }
 
   ngOnInit(): void {
-      
   }
 
-  delete(id: number){
-    if (confirm("Bu resmi silmek istediğinizden emin misiniz?"))
-      this.carImageService.delete(id).subscribe(response=>{
+  delete(id: number) {
+    if (confirm(AreYouSureForDeleteThisImage))
+      this.carImageService.delete(id).subscribe(response => {
         this.toastrService.success(response.message)
         this.deleteFromArray(id)
-      }, responseError=>{
-        this.toastrService.error(responseError.error.message)
-      })
+      }, errorResponse => this.templatesService.errorResponse(errorResponse))
   }
 
-  deleteFromArray(id:number){
-    let index = this.currentCarImagesFromParent.findIndex(x=>x.id == id)
+  deleteFromArray(id: number) {
+    let index = this.currentCarImagesFromParent.findIndex(x => x.id == id)
     this.currentCarImagesFromParent.splice(index, 1)
   }
 
-  getFullImagePath(imagePath:string){
-    return 'https://localhost:44332/' + imagePath
+  getFullImagePath(imagePath: string) {
+    return BaseUrl + imagePath;
   }
 
   reloadPage() {
-    window.location.reload();
+    window.location.reload()
   }
 
-  get getCurrentCarId(){
-    if(!this.currentCarImagesFromParent) return null
-    return this.currentCarImagesFromParent.length > 0 ? this.currentCarImagesFromParent[0].carId : ""
+  get getCurrentCarId() {
+    if (this.currentCarImagesFromParent != null)
+    return this.currentCarImagesFromParent[0].carId
+    else return null
   }
 }

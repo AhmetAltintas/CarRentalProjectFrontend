@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { FormIsMissing } from 'src/app/models/constants/messages';
 import { UpdateFirstAndLastNameDTO } from 'src/app/models/entities/dtos/updateFirstAndLastNameDTO';
 import { UserDTO } from 'src/app/models/entities/dtos/userDto';
 import { AuthService } from 'src/app/services/auth.service';
@@ -53,11 +54,12 @@ export class UpdateFirstAndLastNameComponent
         .subscribe(
           (response) => {
             this.toastrServive.success(response.message);
+            window.location.reload();
           },
           (responseError) => {
             this.toastrServive.error(responseError.error.message);
           }
         );
-    } else this.toastrServive.error('Form eksik');
+    } else this.toastrServive.error(FormIsMissing);
   }
 }

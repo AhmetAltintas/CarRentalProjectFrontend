@@ -8,6 +8,8 @@ import {
 } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { YouMustLoginFirst } from '../models/constants/messages';
+import { LoginPath } from '../models/constants/paths';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
@@ -31,8 +33,8 @@ export class LoginGuard implements CanActivate {
     if (this.authService.isAuthenticated()) {
       return true;
     } else {
-      this.router.navigate(['login']);
-      this.toastrService.info('Sisteme giriş yapmalısınız.');
+      this.router.navigate([LoginPath]);
+      this.toastrService.info(YouMustLoginFirst);
       return false;
     }
   }

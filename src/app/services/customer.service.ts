@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ApiUrl } from '../models/constants/url';
 import { Customer } from '../models/entities/customer';
 import { ListResponseModel } from '../models/responseModels/listResponseModel';
 import { SingleResponseModel } from '../models/responseModels/singleResponseModel';
@@ -10,21 +11,25 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class CustomerService {
-  apiUrl = 'https://localhost:44332/api/customers/';
+  url = ApiUrl + "customers/"
   constructor(private httpClient: HttpClient,private authService:AuthService) {}
 
   getAll(): Observable<ListResponseModel<Customer>> {
-    return this.httpClient.get<ListResponseModel<Customer>>(this.apiUrl + "getall");
+    let newPath = this.url + "getall"
+    return this.httpClient.get<ListResponseModel<Customer>>(newPath);
   }
 
   getById(customerId:number): Observable<SingleResponseModel<Customer>>{
-    let newPath = this.apiUrl + 'getbyid?id=' + customerId
+    let newPath = this.url + 'getbyid?id=' + customerId
     return this.httpClient.get<SingleResponseModel<Customer>>(newPath)
   }
 
   getByUserId(userId:number):Observable<SingleResponseModel<Customer>>{
-    return this.httpClient.get<SingleResponseModel<Customer>>(this.apiUrl + "getByUserId?userId=" + userId)
+    let newPath = this.url + "getByUserId?userId=" + userId
+    return this.httpClient.get<SingleResponseModel<Customer>>(newPath)
   }
+
+
 
   getCurrentCustomer():Observable<SingleResponseModel<Customer>>{
     let currentUserId= this.authService.getCurrentUserId

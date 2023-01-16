@@ -1,37 +1,40 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ApiUrl } from '../models/constants/url';
 import { Payment } from '../models/entities/payment';
 import { ListResponseModel } from '../models/responseModels/listResponseModel';
 import { ResponseModel } from '../models/responseModels/responseModel';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PaymentService {
-  
-  apiUrl = 'https://localhost:44332/api/payments/';
+  url = ApiUrl + 'payments/';
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient:HttpClient) { }
-
-  pay(payment:Payment):Observable<ResponseModel>{
-    let newPath = this.apiUrl + "pay"
-    return this.httpClient.post<ResponseModel>(newPath,payment);
+  pay(payment: Payment): Observable<ResponseModel> {
+    let newPath = this.url + 'pay';
+    return this.httpClient.post<ResponseModel>(newPath, payment);
   }
 
-  delete(payment:Payment):Observable<ResponseModel>{
-    return this.httpClient.post<ResponseModel>(this.apiUrl + "delete", payment)
+  delete(payment: Payment): Observable<ResponseModel> {
+    let newPath = this.url + 'delete';
+    return this.httpClient.post<ResponseModel>(newPath, payment);
   }
 
-  getAllByCustomerId(customerId:number){
-    return this.httpClient.get<ListResponseModel<Payment>>(this.apiUrl + "getAllByCustomerId?customerId=" + customerId)
+  getAllByCustomerId(customerId: number) {
+    let newPath = this.url + 'getAllByCustomerId?customerId=' + customerId;
+    return this.httpClient.get<ListResponseModel<Payment>>(newPath);
   }
 
-  checkIfThisCardIsAlreadySavedForThisCustomer(payment:Payment){
-    return this.httpClient.post<ResponseModel>(this.apiUrl + "checkIfThisCardIsAlreadySavedForThisCustomer", payment)
+  checkIfThisCardIsAlreadySavedForThisCustomer(payment: Payment) {
+    let newPath = this.url + 'checkIfThisCardIsAlreadySavedForThisCustomer';
+    return this.httpClient.post<ResponseModel>(newPath, payment);
   }
 
-  add(payment:Payment){
-    this.httpClient.post<ResponseModel>(this.apiUrl + "add", payment)
+  add(payment: Payment) {
+    let newPath = this.url + 'add';
+    this.httpClient.post<ResponseModel>(newPath, payment);
   }
 }

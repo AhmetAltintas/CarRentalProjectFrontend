@@ -14,7 +14,7 @@
             <tr *ngFor="let rentDetailDTO of rentDetailDTOs">
                 <td>{{rentDetailDTO.id}}</td>
                 <td>{{rentDetailDTO.brandName}}</td>
-                <td>{{rentDetailDTO.firstName}} + {{rentDetailDTO.lastName}}</td>
+                <td>{{rentDetailDTO.firstName}} {{rentDetailDTO.lastName}}</td>
                 <td>{{rentDetailDTO.rentDate|date}}</td>
                 <td>{{rentDetailDTO.returnDate|date}}</td>
             </tr>

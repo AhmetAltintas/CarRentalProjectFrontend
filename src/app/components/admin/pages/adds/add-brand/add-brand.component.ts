@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { FormIsMissing } from 'src/app/models/constants/messages';
 import { Brand } from 'src/app/models/entities/brand';
 import { BrandService } from 'src/app/services/brand.service';
 
@@ -33,10 +34,13 @@ export class AddBrandComponent  implements OnInit{
       let brand: Brand = Object.assign({}, this.addFormGroup.value)
       this.brandService.add(brand).subscribe(response=>{
         this.toastrService.success(response.message)
+        setTimeout(function () {
+          window.location.reload();
+        }, 1000);
       }, errorResponse=>{
         this.toastrService.error(errorResponse.error.message)
       })
     }
-    else this.toastrService.error("Form eksik")
+    else this.toastrService.error(FormIsMissing)
   }
 }

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddBrandPath, AddCarImagePath, AddCarPath, AddColorPath, BrandListPath, CarDetailByIdPath, CarDetailListPath, CarsByBrandIdPath, CarsByColorIdPath, CarsPath, ColorListPath, CustomerListPath, DeleteCarImagePath, HomePagePath, LoginPath, PayPath, ProfilePath, RegisterPath, RentDetailListPath, RentPath } from '../models/constants/paths';
 
 
 @Injectable({
@@ -10,79 +11,82 @@ export class RouterService {
   constructor(private router: Router) { }
 
   homePage() {
-    this.router.navigate([""])
+    this.router.navigate([HomePagePath])
   }
   
   loginPage() {
-    this.router.navigate(["login"])
+    this.router.navigate([LoginPath])
   }
 
   registerPage() {
-    this.router.navigate(["register"])
+    this.router.navigate([RegisterPath])
   }
 
   profilePage(){ 
-    this.router.navigate(['profile'])
+    this.router.navigate([ProfilePath])
   }
 
   carsPage(){
-    this.router.navigate(['cars'])
+    this.router.navigate([CarsPath])
   }
 
   carsPageByBrandId(brandId:number){
-    if (brandId>0) this.router.navigate(["cars/brand/" + brandId])
+    if (brandId>0) this.router.navigate([CarsByBrandIdPath + brandId])
   }
 
   carsPageByColorId(colorId:number){
-    if (colorId>0) this.router.navigate(["cars/color/" + colorId])
+    if (colorId>0) this.router.navigate([CarsByColorIdPath + colorId])
   }
 
   carDetailPageById(id: number) {
-    this.router.navigate(["car-detail/" + id])
+    this.router.navigate([CarDetailByIdPath + id])
   }
 
   rentPage(carId: number) {
-    if (carId > 0) this.router.navigate(["rent/" + carId])
-  }
-
-  addCarImagePageByCarId(carId: number){
-    this.router.navigate(["add-car-image/" + carId])
+    if (carId > 0) this.router.navigate([RentPath + carId])
   }
 
   paymentPage(){
-    this.router.navigate(["pay"])
+    this.router.navigate([PayPath])
+  }
+
+  addCarImagePageByCarId(carId: number){
+    this.router.navigate([AddCarImagePath + carId])
   }
 
   addBrandPage() {
-    this.router.navigate(["add-brand"])
+    this.router.navigate([AddBrandPath])
   }
 
   addCarPage() {
-    this.router.navigate(["add-car"])
+    this.router.navigate([AddCarPath])
   }
 
   addColorPage() {
-    this.router.navigate(["add-color"])
+    this.router.navigate([AddColorPath])
   }
 
   brandListPage() {
-    this.router.navigate(["brand-list"])
+    this.router.navigate([BrandListPath])
   }
 
   colorListPage() {
-    this.router.navigate(["color-list"])
+    this.router.navigate([ColorListPath])
   }
 
   rentDetailListPage() {
-    this.router.navigate(["rent-detail-list"])
+    this.router.navigate([RentDetailListPath])
   }
 
   customerListPage() {
-    this.router.navigate(["customer-list"])
+    this.router.navigate([CustomerListPath])
   }
 
   carDetailListPage() {
-    this.router.navigate(["car-detail-list"])
+    this.router.navigate([CarDetailListPath])
   }
 
+  deleteCarImageComponent(){
+    this.router.navigate([DeleteCarImagePath])
+  }
 }

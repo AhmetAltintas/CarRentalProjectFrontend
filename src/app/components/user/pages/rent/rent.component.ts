@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { RentKey } from 'src/app/models/constants/local-storage-keys';
+import { FormIsMissing } from 'src/app/models/constants/messages';
 import { Customer } from 'src/app/models/entities/customer';
 import { Rent } from 'src/app/models/entities/rent';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -62,7 +63,7 @@ export class RentComponent implements OnInit {
         this.toastrService.error(errorResponse.error.message)
       })
     }
-    else this.toastrService.error("Form eksik")
+    else this.toastrService.error(FormIsMissing)
   }
 
   getCurrentCustomer(){

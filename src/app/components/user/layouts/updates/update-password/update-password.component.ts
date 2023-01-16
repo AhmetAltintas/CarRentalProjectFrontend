@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { FormIsMissing } from 'src/app/models/constants/messages';
 import { UpdatePasswordDTO } from 'src/app/models/entities/dtos/updatePasswordDTO';
 import { UserDTO } from 'src/app/models/entities/dtos/userDto';
 import { AuthService } from 'src/app/services/auth.service';
@@ -41,8 +42,13 @@ export class UpdatePasswordComponent extends UserChildComponentBaseComponent imp
     if (this.updateFormGroup.valid) {
       let updatePasswordDTO: UpdatePasswordDTO = Object.assign({},this.updateFormGroup.value)
       updatePasswordDTO.id = this.currentUserDTOFromParent.id
-      this.authService.updatePassword(updatePasswordDTO)
+      this.authService.updatePassword(updatePasswordDTO).subscribe(response=>{
+        this.toastrService.success(response.message)
+        window.location.reload();
+      },errorResponse=>{
+        this.toastrService.error(errorResponse.error.message)
+      })
     }
-    else this.toastrService.error("Form eksik")
+    else this.toastrService.error(FormIsMissing)
   }
 }

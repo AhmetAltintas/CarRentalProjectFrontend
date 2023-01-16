@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BaseUrl } from 'src/app/models/constants/url';
 import { CarImage } from 'src/app/models/entities/carImage';
 import { CarImageService } from 'src/app/services/car-image.service';
 
@@ -27,7 +28,7 @@ export class CarImagesSliderByCarIdComponent implements OnInit{
   }
 
   getFullImagePath(imagePath:string){
-    return 'https://localhost:44332/' + imagePath;
+    return BaseUrl + imagePath;
   }
 
   getActiveString(carImage:CarImage){

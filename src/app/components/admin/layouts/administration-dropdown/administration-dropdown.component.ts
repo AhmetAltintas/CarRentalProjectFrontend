@@ -12,7 +12,7 @@ export class AdministrationDropdownComponent extends AdminChildComponentBaseComp
   constructor(public override authService:AuthService) {
     super(authService)
     this.innerHTML = "Yönetim"
-    this.classFromParent = "btn dropdown-toggle text-light"
+    this.classFromParent = "btn dropdown-toggle"
   }
 
   ngOnInit(): void {

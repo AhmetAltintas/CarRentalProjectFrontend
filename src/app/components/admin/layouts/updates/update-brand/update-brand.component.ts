@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { FormIsMissing } from 'src/app/models/constants/messages';
 import { Brand } from 'src/app/models/entities/brand';
 import { AuthService } from 'src/app/services/auth.service';
 import { BrandService } from 'src/app/services/brand.service';
@@ -52,6 +53,6 @@ export class UpdateBrandComponent
           this.toastrService.error(responseError.error.message);
         }
       );
-    } else this.toastrService.error('Form eksik');
+    } else this.toastrService.error(FormIsMissing);
   }
 }

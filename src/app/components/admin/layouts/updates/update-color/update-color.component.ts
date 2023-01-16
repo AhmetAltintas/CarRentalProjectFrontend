@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { FormIsMissing } from 'src/app/models/constants/messages';
 import { Color } from 'src/app/models/entities/color';
 import { AuthService } from 'src/app/services/auth.service';
 import { ColorService } from 'src/app/services/color.service';
@@ -43,6 +44,6 @@ export class UpdateColorComponent
       let color:Color=Object.assign({id:this.currentColorFromParent.id},this.updateFormGroup.value)
       this.colorService.update(color)
     }
-    else this.toastrService.error("Form eksik")
+    else this.toastrService.error(FormIsMissing)
   }
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Car } from 'src/app/models/entities/dtos/car';
+import { ToastrService } from 'ngx-toastr';
+import { Car } from 'src/app/models/entities/car';
 import { AuthService } from 'src/app/services/auth.service';
 import { CarService } from 'src/app/services/car.service';
 import { AdminChildComponentBaseComponent } from '../../../bases/admin-child-component-base/admin-child-component-base.component';
@@ -14,7 +15,8 @@ export class DeleteCarComponent extends AdminChildComponentBaseComponent impleme
 
   constructor(
     private carService:CarService,
-    public override authService:AuthService
+    public override authService:AuthService,
+    private toastrService:ToastrService
   ){
     super(authService)
     this.innerHTML = "Sil"
@@ -25,6 +27,11 @@ export class DeleteCarComponent extends AdminChildComponentBaseComponent impleme
   }
 
   delete(){
-    this.carService.delete(this.currentCarFromParent)
+    this.carService.delete(this.currentCarFromParent).subscribe(response=>{
+      this.toastrService.success(response.message)
+      setTimeout(function () {
+        window.location.reload();
+      }, 1000);
+    },errorResponse=> this.toastrService.error(errorResponse.error.message))
   }
 }
