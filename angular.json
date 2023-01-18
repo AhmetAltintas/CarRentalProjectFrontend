@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ReCapProject": {
+    "CarRentalProject": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/re-cap-project",
+            "outputPath": "dist/car-rental-project",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -65,10 +65,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ReCapProject:build:production"
+              "browserTarget": "CarRentalProject:build:production"
             },
             "development": {
-              "browserTarget": "ReCapProject:build:development"
+              "browserTarget": "CarRentalProject:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +76,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ReCapProject:build"
+            "browserTarget": "CarRentalProject:build"
           }
         },
         "test": {
