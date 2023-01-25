@@ -30,3 +30,12 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.text-center{
+  background: none;
+  color: whitesmoke;
+}
+
+.form-floating{
+  color: black;
+}

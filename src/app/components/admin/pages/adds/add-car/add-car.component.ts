@@ -50,7 +50,9 @@ export class AddCarComponent implements OnInit {
       let car: Car = Object.assign({}, this.addFormGroup.value)
       this.carService.addCar(car).subscribe(response=>{
         this.toastrService.success(response.message)
-        window.location.reload();
+        setTimeout(function () {
+            window.location.reload();
+          }, 1000);
       }, errorResponse=>{
         console.log(errorResponse.error)
         this.toastrService.error(errorResponse.error.message)

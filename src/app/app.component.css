@@ -1,0 +1,11 @@
+#main{
+    background-color: black;
+    background-image: url("https://images.fineartamerica.com/images/artworkimages/mediumlarge/2/3d-car-background-gualtiero-boffi.jpg");
+    background-repeat: no-repeat;
+    background-position: 0%;
+    background-size: cover;
+}
+#navBar{
+    background-color: rgb(201, 201, 201);
+    border-radius: 0.3cm;
+}

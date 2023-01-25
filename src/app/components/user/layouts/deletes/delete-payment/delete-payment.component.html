@@ -1,11 +1,11 @@
 <!-- Button trigger modal -->
-<button type="button" [class]="classFromParent" data-bs-toggle="modal" [attr.data-bs-target]="'#deletePaymentModal' + currentPaymentFromParent.id">
+<button type="button" class="btn btn-danger" [class]="classFromParent" data-bs-toggle="modal" [attr.data-bs-target]="'#deletePaymentModal' + currentPaymentFromParent.id">
     {{innerHTML}}
   </button>
   
   <!-- Modal -->
   <div class="modal fade" [id]="'deletePaymentModal' + currentPaymentFromParent.id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="color: black;">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Sil</h5>

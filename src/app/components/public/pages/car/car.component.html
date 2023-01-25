@@ -17,7 +17,7 @@
 <div class="row d-flex justify-content-between">
   <div
     class="card mt-4"
-    style="width: 16rem"
+    style="width: 16rem; background-color: rgb(185, 185, 185)"
     *ngFor="let cars of cars | carsFilter : filterText"
   >
     <div class="mt-2">
@@ -25,25 +25,24 @@
         [currentCarIdFromParent]="cars.id"
       ></app-car-images-slider-by-car-id>
     </div>
-
-    <div class="card-body">
-      <h5 class="card-title">{{ cars.modelName }}</h5>
+    <div class="card-body" style="text-align: center;">
+      <h4 class="card-title">{{ cars.modelName }}</h4>
       <p class="card-text">{{ cars.brandName }}</p>
-
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">{{ cars.colorName }}</li>
-        <li class="list-group-item">{{ cars.description }}</li>
-        <li class="list-group-item">
-          <strong>{{ cars.dailyPrice | currency }}</strong>
-        </li>
-      </ul>
-
-      <div class="card-footer">
-        <app-route-to-car-detail-page-button
-          classFromParent="btn btn-dark w-100"
-          [currentCarIdFromParent]="cars.id"
-        ></app-route-to-car-detail-page-button>
-      </div>
     </div>
+    <ul class="list-group">
+      <li class="list-group-item">{{ cars.colorName }}</li>
+      <li class="list-group-item">{{ cars.description }}</li>
+      <li class="list-group-item" style="color: rgb(65, 0, 0);text-align: center;">
+        <strong>{{ cars.dailyPrice | currency }}</strong>
+      </li>
+    </ul>
+    <br />
+    <div class="card-footer">
+      <app-route-to-car-detail-page-button
+        classFromParent="btn btn-dark w-100"
+        [currentCarIdFromParent]="cars.id"
+      ></app-route-to-car-detail-page-button>
+    </div>
+    <br />
   </div>
 </div>

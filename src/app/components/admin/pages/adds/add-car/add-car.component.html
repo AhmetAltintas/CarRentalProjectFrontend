@@ -1,5 +1,6 @@
-<div>
-    <h4>Araba Ekle</h4>
+<div id="addCar">
+    <h4>ARABA EKLE</h4>
+    <br>
     <form [formGroup]="addFormGroup">
         <div>
             <label for="brandId">Marka</label>
@@ -39,9 +40,9 @@
             <label for="description">Açıklama</label>
             <textarea type="text" id="description" name="description" class="form-control" placeholder="Açıklama" formControlName="description"></textarea>
         </div>
-        
+        <br>
         <div>
-            <button class="btn btn-success mt-2" (click)="add()">Ekle</button>
+            <button class="btn btn-secondary" (click)="add()">Ekle</button>
         </div>
     </form>
 </div>
