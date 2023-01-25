@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand"><app-home-page-button></app-home-page-button></a>
+    &nbsp;<a class="navbar-brand"><app-home-page-button style="font-weight:600"></app-home-page-button></a>
     <button
       class="navbar-toggler"
       type="button"
@@ -16,8 +16,8 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <br>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item active" type="button" style="background-color:rgb(0, 136, 79)">
-          <app-administration-dropdown></app-administration-dropdown>
+        <li class="nav-item active" type="button" style="background-color: rgb(153, 153, 153);">
+          <app-administration-dropdown ></app-administration-dropdown>
         </li>
       </ul>
       <form class="d-flex">
@@ -27,14 +27,15 @@
         <div class="ms-2">
           <app-account-options></app-account-options>
         </div>
+        &nbsp;
         <div>
           <app-login-page-button
-            classFromParent="btn btn-outline-success"
+            classFromParent="btn btn-outline-dark"
           ></app-login-page-button>
         </div>
         <div class="ms-2">
           <app-register-page-button
-            classFromParent="btn btn-outline-success"
+            classFromParent="btn btn-outline-dark"
           ></app-register-page-button>
         </div>
       </form>

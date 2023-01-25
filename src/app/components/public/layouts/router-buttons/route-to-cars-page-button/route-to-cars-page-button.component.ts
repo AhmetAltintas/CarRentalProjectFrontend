@@ -15,7 +15,7 @@ export class RouteToCarsPageButtonComponent extends PublicChildComponentBaseComp
     public override authService:AuthService
   ){
     super(authService)
-    this.innerHTML = "Tüm arabalar"
+    this.innerHTML = "Tüm Arabalar"
   }
 
   ngOnInit(): void {

@@ -1,0 +1,10 @@
+.border{
+    max-width:400px;
+    margin: auto;
+    border-radius: 2px;
+}
+#body{
+    background-color: rgb(153, 153, 153);
+    max-width:400px;
+    margin: auto;
+}

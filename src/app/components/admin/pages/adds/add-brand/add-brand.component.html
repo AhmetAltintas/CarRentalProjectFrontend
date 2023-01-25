@@ -1,13 +1,15 @@
-<div>
-    <h4>Marka Ekle</h4>
+<div id="addBrand">
+    <h4>MARKA EKLE</h4>
+    <br>
     <form [formGroup]="addFormGroup">
         <div>
             <label for="brandName">Marka İsmi</label>
             <input type="text" id="brandName" name="brandName" placeholder="Marka İsmi" class="form-control"
                 formControlName="brandName">
         </div>
+        <br>
         <div class="mt-2">
-            <button class="btn btn-success" (click)="add()">Ekle</button>
+            <button class="btn btn-secondary" (click)="add()">Ekle</button>
         </div>
     </form>
 </div>

@@ -1,4 +1,5 @@
-<div>
+<br>
+<div class="payment">
   <div>
       <app-pay-with-saved-cards></app-pay-with-saved-cards>
   </div>
@@ -7,32 +8,31 @@
       <form [formGroup]="payFormGroup">
           <div>
               <label for="fullName">Kart Üzerindeki İsim</label>
-              <input type="text" id="fullName" placeholder="Kart Üzerindeki Tam İsim" class="form-control"
+              <input type="text" id="fullName" placeholder="Ali Veli" class="form-control"
                   formControlName="fullName">
           </div>
           <div class="mt-2">
               <label for="cardNumber">Kart Numarası</label>
-              <input type="text" id="cardNumber" placeholder="Kart Numarası" class="form-control"
+              <input type="text" id="cardNumber" placeholder="1111 2222 3333 4444" class="form-control"
                   formControlName="cardNumber">
           </div>
           <div class="mt-2 row">
               <div class="col">
                   <label for="expiryMonth">Son Kullanım Ayı</label>
-                  <input type="number" id="expiryMonth" name="expiryMonth" placeholder="Ay" class="form-control" formControlName="expiryMonth">
-                  <!-- <app-small-number-input id="expiryMonth" [minValue]="1" [maxValue]="12" placeholder="Son Kullanım Ayı" formControlName="expiryMonth" name="expiryMonth"></app-small-number-input>  -->
+                  <input type="number" id="expiryMonth" name="expiryMonth" placeholder="11" class="form-control" formControlName="expiryMonth">
               </div>
               <div class="col">
                   <label for="expiryYear">Son Kullanım Yılı</label>
-                  <input type="number" id="expiryYear" name="expiryYear" placeholder="Yıl" class="form-control" formControlName="expiryYear">
-                  <!-- <app-small-number-input id="expiryYear" [minValue]="1" [maxValue]="99" placeholder="Son Kullanım Yılı" formControlName="expiryYear" name="expiryYear"></app-small-number-input> -->
+                  <input type="number" id="expiryYear" name="expiryYear" placeholder="22" class="form-control" formControlName="expiryYear">
               </div>
           </div>
           <div class="mt-2">
               <label for="cvv">CVV</label>
-              <input type="text" id="cvv" placeholder="CVV" class="form-control" formControlName="cvv">
+              <input type="text" id="cvv" placeholder="123" class="form-control" formControlName="cvv">
           </div>
+          <br>
           <div class="mt-2">
-              <button class="btn btn-success" (click)="pay()">Ödemeyi Tamamla</button>
+              <button class="btn btn-secondary" (click)="pay()">Ödemeyi Tamamla</button>
           </div>
       </form>
   </div>
