@@ -41,7 +41,7 @@ export class AddCarImageComponent implements OnInit {
       this.toastrService.success(response.message)
     }, errorResponse=> {
       console.log(errorResponse.error)
-      this.toastrService.error(errorResponse.error)
+      this.toastrService.error(errorResponse.error.message)
     })
     
   }

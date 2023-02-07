@@ -15,7 +15,7 @@ import { RegisterPageButtonComponent } from './components/public/layouts/router-
 import { HomePageButtonComponent } from './components/public/layouts/router-buttons/home-page-button/home-page-button.component';
 import { AccountOptionsComponent } from './components/user/layouts/account-options/account-options.component';
 import { ProfileComponent } from './components/user/pages/profile/profile.component';
-import { LogoutButtonComponent } from './components/user/layouts/logout-button/logout-button.component';
+import { LogoutButtonComponent } from './components/user/layouts/router-buttons/logout-button/logout-button.component';
 import { BrandAndColorSelectOptionCarFilterComponent } from './components/public/layouts/brand-and-color-select-option-car-filter/brand-and-color-select-option-car-filter.component';
 import { RouteToCarsPageButtonComponent } from './components/public/layouts/router-buttons/route-to-cars-page-button/route-to-cars-page-button.component';
 import { BrandSelectOptionCarFilterComponent } from './components/public/layouts/brand-select-option-car-filter/brand-select-option-car-filter.component';
@@ -53,7 +53,6 @@ import { AddColorComponent } from './components/admin/pages/adds/add-color/add-c
 import { CommonChildComponentBaseComponent } from './components/public/bases/common-child-component-base/common-child-component-base.component';
 import { PublicChildComponentBaseComponent } from './components/public/bases/public-child-component-base/public-child-component-base.component';
 import { UserChildComponentBaseComponent } from './components/user/bases/user-child-component-base/user-child-component-base.component';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { BrandsFilterPipe } from './pipes/brands-filter.pipe';
 import { ColorsFilterPipe } from './pipes/colors-filter.pipe';
 import { SmallNumberInputComponent } from './form-controls/small-number-input/small-number-input.component';
@@ -153,8 +152,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     })
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

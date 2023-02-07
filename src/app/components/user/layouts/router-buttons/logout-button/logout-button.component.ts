@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserChildComponentBaseComponent } from '../../bases/user-child-component-base/user-child-component-base.component';
+import { UserChildComponentBaseComponent } from '../../../bases/user-child-component-base/user-child-component-base.component';
 
 @Component({
   selector: 'app-logout-button',
