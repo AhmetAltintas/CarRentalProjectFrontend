@@ -1,48 +1,35 @@
-<div class="mt-1">
-  <app-brand-and-color-select-option-car-filter></app-brand-and-color-select-option-car-filter>
+<div class="search-box">
+  <input
+    type="text"
+    id="filterText"
+    name="filterText"
+    class="form-control"
+    placeholder="Araç Ara"
+    [(ngModel)]="filterText"
+  />
 </div>
-<br />
-<div>
-  <div>
-    <input
-      type="text"
-      id="filterText"
-      name="filterText"
-      class="form-control"
-      placeholder="Arama metni giriniz"
-      [(ngModel)]="filterText"
-    />
-  </div>
-</div>
-<div class="row d-flex justify-content-between">
-  <div
-    class="card mt-4"
-    style="width: 16rem; background-color: rgb(185, 185, 185)"
-    *ngFor="let cars of cars | carsFilter : filterText"
-  >
-    <div class="mt-2">
+
+<div class="car-list">
+  <div class="car-card" *ngFor="let cars of cars | carsFilter : filterText">
+    <div class="car-image">
       <app-car-images-slider-by-car-id
         [currentCarIdFromParent]="cars.id"
       ></app-car-images-slider-by-car-id>
     </div>
-    <div class="card-body" style="text-align: center;">
-      <h4 class="card-title">{{ cars.modelName }}</h4>
-      <p class="card-text">{{ cars.brandName }}</p>
+    <div class="car-details">
+      <h4 class="car-title">{{ cars.modelName }}</h4>
+      <p class="car-brand">{{ cars.brandName }}</p>
+      <ul class="car-info-list">
+        <li class="car-color">{{ cars.colorName }}</li>
+        <li class="car-description">{{ cars.description }}</li>
+        <li class="car-price"><strong>{{ cars.dailyPrice | currency }}</strong></li>
+      </ul>
     </div>
-    <ul class="list-group">
-      <li class="list-group-item">{{ cars.colorName }}</li>
-      <li class="list-group-item">{{ cars.description }}</li>
-      <li class="list-group-item" style="color: rgb(65, 0, 0);text-align: center;">
-        <strong>{{ cars.dailyPrice | currency }}</strong>
-      </li>
-    </ul>
-    <br />
-    <div class="card-footer">
+    <div class="car-action">
+      <button>
       <app-route-to-car-detail-page-button
-        classFromParent="btn btn-dark w-100"
         [currentCarIdFromParent]="cars.id"
       ></app-route-to-car-detail-page-button>
+    </button>
     </div>
-    <br />
   </div>
-</div>
